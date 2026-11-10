@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>projet</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <link href="data:text/css,%0A%2Emarkdown%2Dbody%7B%2D%2Dbase%2Dsize%2D16%3A1rem%3B%2D%2Dbase%2Dsize%2D24%3A1%2E5rem%3B%2D%2Dbase%2Dsize%2D4%3A0%2E25rem%3B%2D%2Dbase%2Dsize%2D40%3A2%2E5rem%3B%2D%2Dbase%2Dsize%2D8%3A0%2E5rem%3B%2D%2Dbase%2Dtext%2Dweight%2Dmedium%3A500%3B%2D%2Dbase%2Dtext%2Dweight%2Dnormal%3A400%3B%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%3A600%3B%2D%2DfontStack%2Dmonospace%3Aui%2Dmonospace%2CSFMono%2DRegular%2CSF%20Mono%2CMenlo%2CConsolas%2CLiberation%20Mono%2Cmonospace%3B%2D%2DfontStack%2DsansSerif%3A%2Dapple%2Dsystem%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2C%22Noto%20Sans%22%2CHelvetica%2CArial%2Csans%2Dserif%2C%22Apple%20Color%20Emoji%22%2C%22Segoe%20UI%20Emoji%22%3B%2D%2DfgColor%2Daccent%3AHighlight%7D%40media%20%28prefers%2Dcolor%2Dscheme%3Adark%29%7B%2Emarkdown%2Dbody%2C%5Bdata%2Dtheme%3Ddark%5D%7Bcolor%2Dscheme%3Adark%3B%2D%2DfgColor%2Daccent%3A%234493f8%3B%2D%2DbgColor%2Dattention%2Dmuted%3A%23bb800926%3B%2D%2DbgColor%2Ddefault%3A%230d1117%3B%2D%2DbgColor%2Dmuted%3A%23151b23%3B%2D%2DbgColor%2Dneutral%2Dmuted%3A%23656c7633%3B%2D%2DborderColor%2Daccent%2Demphasis%3A%231f6feb%3B%2D%2DborderColor%2Dattention%2Demphasis%3A%239e6a03%3B%2D%2DborderColor%2Ddanger%2Demphasis%3A%23da3633%3B%2D%2DborderColor%2Ddefault%3A%233d444d%3B%2D%2DborderColor%2Ddone%2Demphasis%3A%238957e5%3B%2D%2DborderColor%2Dsuccess%2Demphasis%3A%23238636%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%239198a1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%23f85149%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%23b62324%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%239198a1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%2379c0ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%23a5d6ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%23d2a8ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%237ee787%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%23ff7b72%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%235a1e02%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%23ffdfb6%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%2367060c%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%23ffdcd7%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%231f6feb%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%231158c7%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%23033a16%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%23aff5b4%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%23f2cc60%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%23d2a8ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%23a5d6ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%237ee787%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%233d444d%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%23ffa657%3B%2D%2DfgColor%2Dattention%3A%23d29922%3B%2D%2DfgColor%2Ddanger%3A%23f85149%3B%2D%2DfgColor%2Ddefault%3A%23f0f6fc%3B%2D%2DfgColor%2Ddone%3A%23ab7df8%3B%2D%2DfgColor%2Dmuted%3A%239198a1%3B%2D%2DfgColor%2Dsuccess%3A%233fb950%3B%2D%2DborderColor%2Dmuted%3A%233d444db3%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3Avar%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3Avar%28%2D%2DfgColor%2Ddanger%29%3B%2D%2Dfocus%2DoutlineColor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%2D%2DborderColor%2Dneutral%2Dmuted%3Avar%28%2D%2DborderColor%2Dmuted%29%7D%7D%40media%20%28prefers%2Dcolor%2Dscheme%3Alight%29%7B%2Emarkdown%2Dbody%2C%5Bdata%2Dtheme%3Dlight%5D%7Bcolor%2Dscheme%3Alight%3B%2D%2DfgColor%2Ddanger%3A%23d1242f%3B%2D%2DbgColor%2Dattention%2Dmuted%3A%23fff8c5%3B%2D%2DbgColor%2Dmuted%3A%23f6f8fa%3B%2D%2DbgColor%2Dneutral%2Dmuted%3A%23818b981f%3B%2D%2DborderColor%2Daccent%2Demphasis%3A%230969da%3B%2D%2DborderColor%2Dattention%2Demphasis%3A%239a6700%3B%2D%2DborderColor%2Ddanger%2Demphasis%3A%23cf222e%3B%2D%2DborderColor%2Ddefault%3A%23d1d9e0%3B%2D%2DborderColor%2Ddone%2Demphasis%3A%238250df%3B%2D%2DborderColor%2Dsuccess%2Demphasis%3A%231a7f37%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%2359636e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%2382071e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%23cf222e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%23f6f8fa%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%2359636e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%230a3069%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%236639ba%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3Avar%28%2D%2DfgColor%2Ddanger%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%23cf222e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%23ffd8b5%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%23953800%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%23ffebe9%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%2382071e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%23d1d9e0%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%23dafbe1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%23116329%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%233b2300%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%238250df%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%230a3069%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%23116329%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%23818b98%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%23953800%3B%2D%2DfgColor%2Daccent%3A%230969da%3B%2D%2DfgColor%2Dattention%3A%239a6700%3B%2D%2DfgColor%2Ddone%3A%238250df%3B%2D%2DfgColor%2Dmuted%3A%2359636e%3B%2D%2DfgColor%2Dsuccess%3A%231a7f37%3B%2D%2DbgColor%2Ddefault%3A%23ffffff%3B%2D%2DborderColor%2Dmuted%3A%23d1d9e0b3%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3Avar%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%231f2328%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%231f2328%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%231f2328%3B%2D%2DfgColor%2Ddefault%3A%231f2328%3B%2D%2Dfocus%2DoutlineColor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%2D%2DborderColor%2Dneutral%2Dmuted%3Avar%28%2D%2DborderColor%2Dmuted%29%7D%7D%2Emarkdown%2Dbody%7B%2Dms%2Dtext%2Dsize%2Dadjust%3A100%25%3B%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A100%25%3Bmargin%3A0%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2DsansSerif%2C%20%2Dapple%2Dsystem%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20%22Noto%20Sans%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%29%3Bfont%2Dsize%3A16px%3Bline%2Dheight%3A1%2E5%3Bword%2Dwrap%3Abreak%2Dword%7D%2Emarkdown%2Dbody%20a%7Btext%2Ddecoration%3Aunderline%3Btext%2Dunderline%2Doffset%3A%2E2rem%7D%2Emarkdown%2Dbody%20%2Eocticon%7Bdisplay%3Ainline%2Dblock%3Bfill%3AcurrentColor%3Bvertical%2Dalign%3Atext%2Dbottom%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%7Bwidth%3A16px%3Bheight%3A16px%3Bcontent%3A%27%20%27%3Bdisplay%3Ainline%2Dblock%3Bbackground%2Dcolor%3AcurrentColor%3B%2Dwebkit%2Dmask%2Dimage%3Aurl%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%3Bmask%2Dimage%3Aurl%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%7D%2Emarkdown%2Dbody%20details%2C%2Emarkdown%2Dbody%20figcaption%2C%2Emarkdown%2Dbody%20figure%7Bdisplay%3Ablock%7D%2Emarkdown%2Dbody%20summary%7Bdisplay%3Alist%2Ditem%7D%2Emarkdown%2Dbody%20%5Bhidden%5D%7Bdisplay%3Anone%21important%7D%2Emarkdown%2Dbody%20a%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bcolor%3Avar%28%2D%2DfgColor%2Daccent%29%3Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20abbr%5Btitle%5D%7Bborder%2Dbottom%3Anone%3B%2Dwebkit%2Dtext%2Ddecoration%3Aunderline%20dotted%3Btext%2Ddecoration%3Aunderline%20dotted%7D%2Emarkdown%2Dbody%20b%2C%2Emarkdown%2Dbody%20strong%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20dfn%7Bfont%2Dstyle%3Aitalic%7D%2Emarkdown%2Dbody%20h1%7Bmargin%3A%2E67em%200%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bpadding%2Dbottom%3A%2E3em%3Bfont%2Dsize%3A2em%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20mark%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dattention%2Dmuted%29%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20small%7Bfont%2Dsize%3A90%25%7D%2Emarkdown%2Dbody%20sub%2C%2Emarkdown%2Dbody%20sup%7Bfont%2Dsize%3A75%25%3Bline%2Dheight%3A0%3Bposition%3Arelative%3Bvertical%2Dalign%3Abaseline%7D%2Emarkdown%2Dbody%20sub%7Bbottom%3A%2D%2E25em%7D%2Emarkdown%2Dbody%20sup%7Btop%3A%2D%2E5em%7D%2Emarkdown%2Dbody%20img%7Bborder%2Dstyle%3Anone%3Bmax%2Dwidth%3A100%25%3Bbox%2Dsizing%3Acontent%2Dbox%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20kbd%2C%2Emarkdown%2Dbody%20pre%2C%2Emarkdown%2Dbody%20samp%7Bfont%2Dfamily%3Amonospace%3Bfont%2Dsize%3A1em%7D%2Emarkdown%2Dbody%20figure%7Bmargin%3A1em%20var%28%2D%2Dbase%2Dsize%2D40%29%7D%2Emarkdown%2Dbody%20hr%7Bbox%2Dsizing%3Acontent%2Dbox%3Boverflow%3Ahidden%3Bbackground%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3Bheight%3A%2E25em%3Bpadding%3A0%3Bmargin%3Avar%28%2D%2Dbase%2Dsize%2D24%29%200%3Bbackground%2Dcolor%3Avar%28%2D%2DborderColor%2Ddefault%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20input%7Bfont%3Ainherit%3Bmargin%3A0%3Boverflow%3Avisible%3Bfont%2Dfamily%3Ainherit%3Bfont%2Dsize%3Ainherit%3Bline%2Dheight%3Ainherit%7D%2Emarkdown%2Dbody%20%5Btype%3Dbutton%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dreset%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dsubmit%5D%7B%2Dwebkit%2Dappearance%3Abutton%3Bappearance%3Abutton%7D%2Emarkdown%2Dbody%20%5Btype%3Dcheckbox%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dradio%5D%7Bbox%2Dsizing%3Aborder%2Dbox%3Bpadding%3A0%7D%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%2C%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%7Bheight%3Aauto%7D%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Dcancel%2Dbutton%2C%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Ddecoration%7B%2Dwebkit%2Dappearance%3Anone%3Bappearance%3Anone%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dinput%2Dplaceholder%7Bcolor%3Ainherit%3Bopacity%3A%2E54%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dfile%2Dupload%2Dbutton%7B%2Dwebkit%2Dappearance%3Abutton%3Bappearance%3Abutton%3Bfont%3Ainherit%7D%2Emarkdown%2Dbody%20a%3Ahover%7Btext%2Ddecoration%3Aunderline%7D%2Emarkdown%2Dbody%20%3A%3Aplaceholder%7Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bopacity%3A1%7D%2Emarkdown%2Dbody%20hr%3A%3Abefore%7Bdisplay%3Atable%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%20hr%3A%3Aafter%7Bdisplay%3Atable%3Bclear%3Aboth%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%20table%7Bborder%2Dspacing%3A0%3Bborder%2Dcollapse%3Acollapse%3Bdisplay%3Ablock%3Bwidth%3Amax%2Dcontent%3Bmax%2Dwidth%3A100%25%3Boverflow%3Aauto%3Bfont%2Dvariant%3Atabular%2Dnums%7D%2Emarkdown%2Dbody%20td%2C%2Emarkdown%2Dbody%20th%7Bpadding%3A0%7D%2Emarkdown%2Dbody%20details%20summary%7Bcursor%3Apointer%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2C%2Emarkdown%2Dbody%20a%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A%2D2px%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3Asolid%201px%20rgba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20a%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A%2D2px%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2C%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%7Boutline%2Doffset%3A0%7D%2Emarkdown%2Dbody%20kbd%7Bdisplay%3Ainline%2Dblock%3Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D4%29%3Bfont%3A11px%20var%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bline%2Dheight%3A10px%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bvertical%2Dalign%3Amiddle%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%3Asolid%201px%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3Bborder%2Dradius%3A6px%3Bbox%2Dshadow%3Ainset%200%20%2D1px%200%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%7D%2Emarkdown%2Dbody%20h1%2C%2Emarkdown%2Dbody%20h2%2C%2Emarkdown%2Dbody%20h3%2C%2Emarkdown%2Dbody%20h4%2C%2Emarkdown%2Dbody%20h5%2C%2Emarkdown%2Dbody%20h6%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D24%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bline%2Dheight%3A1%2E25%7D%2Emarkdown%2Dbody%20h2%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bpadding%2Dbottom%3A%2E3em%3Bfont%2Dsize%3A1%2E5em%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20h3%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A1%2E25em%7D%2Emarkdown%2Dbody%20h4%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A1em%7D%2Emarkdown%2Dbody%20h5%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A%2E875em%7D%2Emarkdown%2Dbody%20h6%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A%2E85em%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20p%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A10px%7D%2Emarkdown%2Dbody%20blockquote%7Bmargin%3A0%3Bpadding%3A0%201em%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bborder%2Dleft%3A%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20ol%2C%2Emarkdown%2Dbody%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%3Bpadding%2Dleft%3A2em%7D%2Emarkdown%2Dbody%20ol%20ol%2C%2Emarkdown%2Dbody%20ul%20ol%7Blist%2Dstyle%2Dtype%3Alower%2Droman%7D%2Emarkdown%2Dbody%20ol%20ol%20ol%2C%2Emarkdown%2Dbody%20ol%20ul%20ol%2C%2Emarkdown%2Dbody%20ul%20ol%20ol%2C%2Emarkdown%2Dbody%20ul%20ul%20ol%7Blist%2Dstyle%2Dtype%3Alower%2Dalpha%7D%2Emarkdown%2Dbody%20dd%7Bmargin%2Dleft%3A0%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20samp%2C%2Emarkdown%2Dbody%20tt%7Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bfont%2Dsize%3A12px%7D%2Emarkdown%2Dbody%20pre%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%3Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bfont%2Dsize%3A12px%3Bword%2Dwrap%3Anormal%7D%2Emarkdown%2Dbody%20%2Eocticon%7Bdisplay%3Ainline%2Dblock%3Boverflow%3Avisible%21important%3Bvertical%2Dalign%3Atext%2Dbottom%3Bfill%3AcurrentColor%7D%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%2C%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%7Bmargin%3A0%3Bappearance%3Anone%7D%2Emarkdown%2Dbody%20%2Emr%2D2%7Bmargin%2Dright%3Avar%28%2D%2Dbase%2Dsize%2D8%2C8px%29%21important%7D%2Emarkdown%2Dbody%3A%3Abefore%7Bdisplay%3Atable%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%3A%3Aafter%7Bdisplay%3Atable%3Bclear%3Aboth%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%21important%7D%2Emarkdown%2Dbody%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%21important%7D%2Emarkdown%2Dbody%20a%3Anot%28%5Bhref%5D%29%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20%2Eabsent%7Bcolor%3Avar%28%2D%2DfgColor%2Ddanger%29%7D%2Emarkdown%2Dbody%20%2Eanchor%7Bfloat%3Aleft%3Bpadding%2Dright%3Avar%28%2D%2Dbase%2Dsize%2D4%29%3Bmargin%2Dleft%3A%2D20px%3Bline%2Dheight%3A1%7D%2Emarkdown%2Dbody%20%2Eanchor%3Afocus%7Boutline%3A0%7D%2Emarkdown%2Dbody%20blockquote%2C%2Emarkdown%2Dbody%20details%2C%2Emarkdown%2Dbody%20dl%2C%2Emarkdown%2Dbody%20ol%2C%2Emarkdown%2Dbody%20p%2C%2Emarkdown%2Dbody%20pre%2C%2Emarkdown%2Dbody%20table%2C%2Emarkdown%2Dbody%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20blockquote%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%7D%2Emarkdown%2Dbody%20blockquote%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20h1%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h2%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h3%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h4%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h5%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h6%20%2Eocticon%2Dlink%7Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bvertical%2Dalign%3Amiddle%3Bvisibility%3Ahidden%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%7Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%7Bvisibility%3Avisible%7D%2Emarkdown%2Dbody%20h1%20code%2C%2Emarkdown%2Dbody%20h1%20tt%2C%2Emarkdown%2Dbody%20h2%20code%2C%2Emarkdown%2Dbody%20h2%20tt%2C%2Emarkdown%2Dbody%20h3%20code%2C%2Emarkdown%2Dbody%20h3%20tt%2C%2Emarkdown%2Dbody%20h4%20code%2C%2Emarkdown%2Dbody%20h4%20tt%2C%2Emarkdown%2Dbody%20h5%20code%2C%2Emarkdown%2Dbody%20h5%20tt%2C%2Emarkdown%2Dbody%20h6%20code%2C%2Emarkdown%2Dbody%20h6%20tt%7Bpadding%3A0%20%2E2em%3Bfont%2Dsize%3Ainherit%7D%2Emarkdown%2Dbody%20summary%20h1%2C%2Emarkdown%2Dbody%20summary%20h2%2C%2Emarkdown%2Dbody%20summary%20h3%2C%2Emarkdown%2Dbody%20summary%20h4%2C%2Emarkdown%2Dbody%20summary%20h5%2C%2Emarkdown%2Dbody%20summary%20h6%7Bdisplay%3Ainline%2Dblock%7D%2Emarkdown%2Dbody%20summary%20h1%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h2%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h3%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h4%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h5%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h6%20%2Eanchor%7Bmargin%2Dleft%3A%2D40px%7D%2Emarkdown%2Dbody%20summary%20h1%2C%2Emarkdown%2Dbody%20summary%20h2%7Bpadding%2Dbottom%3A0%3Bborder%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20ol%2Eno%2Dlist%2C%2Emarkdown%2Dbody%20ul%2Eno%2Dlist%7Bpadding%3A0%3Blist%2Dstyle%2Dtype%3Anone%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22a%20s%22%5D%7Blist%2Dstyle%2Dtype%3Alower%2Dalpha%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22A%20s%22%5D%7Blist%2Dstyle%2Dtype%3Aupper%2Dalpha%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22i%20s%22%5D%7Blist%2Dstyle%2Dtype%3Alower%2Droman%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22I%20s%22%5D%7Blist%2Dstyle%2Dtype%3Aupper%2Droman%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%221%22%5D%7Blist%2Dstyle%2Dtype%3Adecimal%7D%2Emarkdown%2Dbody%20div%3Eol%3Anot%28%5Btype%5D%29%7Blist%2Dstyle%2Dtype%3Adecimal%7D%2Emarkdown%2Dbody%20ol%20ol%2C%2Emarkdown%2Dbody%20ol%20ul%2C%2Emarkdown%2Dbody%20ul%20ol%2C%2Emarkdown%2Dbody%20ul%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20li%3Ep%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20li%2Bli%7Bmargin%2Dtop%3A%2E25em%7D%2Emarkdown%2Dbody%20dl%7Bpadding%3A0%7D%2Emarkdown%2Dbody%20dl%20dt%7Bpadding%3A0%3Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bfont%2Dsize%3A1em%3Bfont%2Dstyle%3Aitalic%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20dl%20dd%7Bpadding%3A0%20var%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20table%20th%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20table%20td%2C%2Emarkdown%2Dbody%20table%20th%7Bpadding%3A6px%2013px%3Bborder%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20table%20td%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20table%20tr%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bborder%2Dtop%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20table%20tr%3Anth%2Dchild%282n%29%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20table%20img%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20img%5Balign%3Dright%5D%7Bpadding%2Dleft%3A20px%7D%2Emarkdown%2Dbody%20img%5Balign%3Dleft%5D%7Bpadding%2Dright%3A20px%7D%2Emarkdown%2Dbody%20%2Eemoji%7Bmax%2Dwidth%3Anone%3Bvertical%2Dalign%3Atext%2Dtop%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20span%2Eframe%7Bdisplay%3Ablock%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Eframe%3Espan%7Bdisplay%3Ablock%3Bfloat%3Aleft%3Bwidth%3Aauto%3Bpadding%3A7px%3Bmargin%3A13px%200%200%3Boverflow%3Ahidden%3Bborder%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20span%2Eframe%20span%20img%7Bdisplay%3Ablock%3Bfloat%3Aleft%7D%2Emarkdown%2Dbody%20span%2Eframe%20span%20span%7Bdisplay%3Ablock%3Bpadding%3A5px%200%200%3Bclear%3Aboth%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%7Bdisplay%3Ablock%3Boverflow%3Ahidden%3Bclear%3Aboth%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%20auto%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Acenter%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%20span%20img%7Bmargin%3A0%20auto%3Btext%2Dalign%3Acenter%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%7Bdisplay%3Ablock%3Boverflow%3Ahidden%3Bclear%3Aboth%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%200%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%20span%20img%7Bmargin%3A0%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%7Bdisplay%3Ablock%3Bfloat%3Aleft%3Bmargin%2Dright%3A13px%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%20span%7Bmargin%3A13px%200%200%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dright%7Bdisplay%3Ablock%3Bfloat%3Aright%3Bmargin%2Dleft%3A13px%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dright%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%20auto%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20tt%7Bpadding%3A%2E2em%20%2E4em%3Bmargin%3A0%3Bfont%2Dsize%3A85%25%3Bwhite%2Dspace%3Abreak%2Dspaces%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dneutral%2Dmuted%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20code%20br%2C%2Emarkdown%2Dbody%20tt%20br%7Bdisplay%3Anone%7D%2Emarkdown%2Dbody%20del%20code%7Btext%2Ddecoration%3Ainherit%7D%2Emarkdown%2Dbody%20samp%7Bfont%2Dsize%3A85%25%7D%2Emarkdown%2Dbody%20pre%20code%7Bfont%2Dsize%3A100%25%7D%2Emarkdown%2Dbody%20pre%3Ecode%7Bpadding%3A0%3Bmargin%3A0%3Bword%2Dbreak%3Anormal%3Bwhite%2Dspace%3Apre%3Bbackground%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ehighlight%7Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%7Bmargin%2Dbottom%3A0%3Bword%2Dbreak%3Anormal%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%2C%2Emarkdown%2Dbody%20pre%7Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Boverflow%3Aauto%3Bfont%2Dsize%3A85%25%3Bline%2Dheight%3A1%2E45%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20pre%20code%2C%2Emarkdown%2Dbody%20pre%20tt%7Bdisplay%3Ainline%3Bpadding%3A0%3Bmargin%3A0%3Boverflow%3Avisible%3Bline%2Dheight%3Ainherit%3Bword%2Dwrap%3Anormal%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20td%2C%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%7Bpadding%3A5px%3Boverflow%3Ahidden%3Bfont%2Dsize%3A12px%3Bline%2Dheight%3A1%3Btext%2Dalign%3Aleft%3Bwhite%2Dspace%3Anowrap%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20%2Eblob%2Dnum%7Bpadding%3A10px%20var%28%2D%2Dbase%2Dsize%2D8%29%209px%3Btext%2Dalign%3Aright%3Bbackground%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20tr%7Bborder%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bbackground%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Abefore%7Bcontent%3A%22%5B%22%7D%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Aafter%7Bcontent%3A%22%5D%22%7D%2Emarkdown%2Dbody%20%2Efootnotes%7Bfont%2Dsize%3A12px%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bborder%2Dtop%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20ol%7Bpadding%2Dleft%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20ol%20ul%7Bdisplay%3Ainline%2Dblock%3Bpadding%2Dleft%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%7Bposition%3Arelative%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%3A%3Abefore%7Bposition%3Aabsolute%3Btop%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bright%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bbottom%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bleft%3Acalc%28var%28%2D%2Dbase%2Dsize%2D24%29%2A%2D1%29%3Bpointer%2Devents%3Anone%3Bcontent%3A%22%22%3Bborder%3A2px%20solid%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%7Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20%2Edata%2Dfootnote%2Dbackref%20g%2Demoji%7Bfont%2Dfamily%3Amonospace%7D%2Emarkdown%2Dbody%20%2Epl%2Dc%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dc1%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dv%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%29%7D%2Emarkdown%2Dbody%20%2Epl%2De%2C%2Emarkdown%2Dbody%20%2Epl%2Den%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%29%7D%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Ds1%2C%2Emarkdown%2Dbody%20%2Epl%2Dsmi%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dent%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dk%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dpds%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsra%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsre%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsmw%2C%2Emarkdown%2Dbody%20%2Epl%2Dv%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dbu%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dii%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dc2%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dml%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmh%2C%2Emarkdown%2Dbody%20%2Epl%2Dmh%20%2Epl%2Den%2C%2Emarkdown%2Dbody%20%2Epl%2Dms%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi%7Bfont%2Dstyle%3Aitalic%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmb%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmd%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi1%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmc%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi2%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmdr%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dba%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsg%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dcorl%7Btext%2Ddecoration%3Aunderline%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%29%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20%5Brole%3Dtabpanel%5D%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20button%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20summary%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3A0%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20details%2Ddialog%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3A0%7D%2Emarkdown%2Dbody%20g%2Demoji%7Bdisplay%3Ainline%2Dblock%3Bmin%2Dwidth%3A1ch%3Bfont%2Dfamily%3A%22Apple%20Color%20Emoji%22%2C%22Segoe%20UI%20Emoji%22%2C%22Segoe%20UI%20Symbol%22%3Bfont%2Dsize%3A1em%3Bfont%2Dstyle%3Anormal%21important%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%3Bline%2Dheight%3A1%3Bvertical%2Dalign%3A%2D%2E075em%7D%2Emarkdown%2Dbody%20g%2Demoji%20img%7Bwidth%3A1em%3Bheight%3A1em%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%7Bdisplay%3Ablock%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Anot%28%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%29%7Bwidth%3Afit%2Dcontent%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%3Afocus%2Dvisible%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A2px%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%7Blist%2Dstyle%2Dtype%3Anone%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20label%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Eenabled%20label%7Bcursor%3Apointer%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D4%29%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20%2Ehandle%7Bdisplay%3Anone%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2E2em%20%2E25em%20%2D1%2E4em%3Bvertical%2Dalign%3Amiddle%7D%2Emarkdown%2Dbody%20ul%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2D1%2E6em%20%2E25em%20%2E2em%7D%2Emarkdown%2Dbody%20ol%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2D1%2E6em%20%2E25em%20%2E2em%7D%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Afocus%2Dwithin%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%2C%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Ahover%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%7Bdisplay%3Ablock%3Bwidth%3Aauto%3Bheight%3A24px%3Boverflow%3Avisible%3Bclip%2Dpath%3Anone%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dcalendar%2Dpicker%2Dindicator%7Bfilter%3Ainvert%2850%25%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%7Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D8%29%20var%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bcolor%3Ainherit%3Bborder%2Dleft%3A%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%20%2Emarkdown%2Dalert%2Dtitle%7Bdisplay%3Aflex%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dmedium%2C500%29%3Balign%2Ditems%3Acenter%3Bline%2Dheight%3A1%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Daccent%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Ddone%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Ddone%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Dattention%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Dattention%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Dsuccess%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Dsuccess%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Ddanger%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Ddanger%29%7D%2Emarkdown%2Dbody%3E%3Afirst%2Dchild%3E%2Eheading%2Delement%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%21important%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%3Ahas%28%2B%2Ezeroclipboard%2Dcontainer%29%7Bmin%2Dheight%3A52px%7D%0A" rel="stylesheet" />
+  <style>
+body { max-width: 900px; margin: 40px auto; padding: 0 20px; font-size: 20px; line-height: 1.7; }
+code, pre { font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">projet</h1>
+</header>
+<h1 id="dossier-dindexation-2027--final-stress-test-and-french-implementation-guide">Dossier
+d&#39;indexation 2027 — Final Stress Test and French Implementation
+Guide</h1>
+<p><strong>Verdict: GO WITH CHANGES.</strong> No pre-registered kill
+finding is fully triggered, but two attacks come close. First, a French
+self-serve SaaS (Reevalo) already reads contract clauses, calculates
+revisions and generates letters from €39 excl. VAT/month, with a free
+3-contract plan. Second, the Doubs pool of employer firms is probably
+smaller than assumed (about 50–125, inferred). The idea survives only as
+a <strong>done-for-you, cleaning-specific, forward-looking</strong>
+service, sold mainly by phone across Doubs plus its neighbouring
+départements, and timed on the 1 December 2026 SMIC increase.</p>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>Survives, but narrowly:</strong> the Index Propreté rose
+from 106.6 (Q2 2023) and 108.6 (Q3 2023) to 116.0 (Q2 2026, +2.5% year
+on year). A €60k contract book therefore has €790–€5,290/year at stake,
+depending on the date of the last revision. That is far above the €190
+fee, so the Money criterion is met.</li>
+<li><strong>Biggest threats:</strong> Reevalo (from €39/month, AI clause
+extraction, revision letters, retroactive audit) sets a low DIY price
+anchor, and the free simulator on index-proprete.fr already does the
+arithmetic. What still sells is reading the clause, applying the
+cleaning context (CCN grid, SMIC) and producing ready-to-send drafts
+plus an anniversary calendar, done for the owner in 48 hours.</li>
+<li><strong>Act now:</strong> on 9 November 2026, after the conférence
+sociale at Matignon, Labour Minister Jean-Pierre Farandou announced a
+SMIC rise of +1.6% from 1 December 2026 (&quot;nous décidons d&#39;anticiper […]
+la hausse au 1er décembre&quot;). It replaces the January 2027 revaluation.
+Most January anniversaries fall within 7 weeks. Run phone-first B2B
+outreach (information + opt-out; CNIL rules), keep a hard kill rule, and
+drop retroactive back-billing from the core promise.</li>
+</ul>
+<h2 id="key-findings--attack-table">Key Findings — attack table</h2>
+<p>Labels: <strong>V</strong> = verified from a source,
+<strong>I</strong> = inferred, <strong>A</strong> = assumption,
+<strong>U</strong> = unverified.</p>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Attack (pre-registered kill finding)</th>
+<th>What was found (source, date)</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Existing free/low-cost tool for non-members (clause + dates →
+revised price + ready letter)</td>
+<td><strong>Reevalo</strong> (SAS Boudier, Nice): AI clause extraction,
+calculation on the anniversary date, &quot;lettres de révision PDF&quot;,
+retroactive audit, free loss calculator. Prices: Free (3 contracts),
+Starter €39 excl. VAT/month (25 contracts), Pro €99 (V, reevalo.io,
+fetched 10 Nov 2026). Its index list has INSEE &quot;IPPS nettoyage&quot; and
+ICHT-N but <strong>not</strong> the FEP Index Propreté (&quot;Un indice vous
+manque ? Nous l&#39;ajoutons sous 48 h&quot;) (V). Clepsiidre advertises
+automated revisions (vendor, weak). Memsoft Gescom revises contract
+invoices automatically from an index (V, aides.memsoft.fr). The free
+simulator on index-proprete.fr only calculates (V). FEP clauses and
+client notes are members-only (V). No cleaning-sector software module or
+accountant offer was confirmed (U).</td>
+<td><strong>Weakened (near-fatal)</strong> — the tool exists for generic
+indices. It does not cover Index Propreté today, and it is not
+done-for-you.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Willingness to pay / refusal</td>
+<td>No evidence of refusal found (U). FEP&#39;s Chiffres clés 2023: in 2022,
+&quot;sept entreprises sur dix ont reporté moins de 10% de cette hausse des
+coûts dans leurs prix&quot; (V, federation-proprete.com). The 2026 edition
+says the gap between costs and prices continues in 2025 and margins and
+cash are major worries (V, Services Propreté). A cleaning firm&#39;s blog
+says FEP membership costs &quot;quelques milliers d&#39;euros&quot; for a PME (weak,
+I).</td>
+<td><strong>Survives (pain V, WTP U)</strong></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Gain size</td>
+<td>Index Propreté: Q2 2023 = 106.6 (V, FEP); Q3 2023 = 108.6 (V,
+Services Propreté, 14 Feb 2024); Q1 2026 = 114.5 and Q2 2026 = 116.0,
++1.3% q/q, +2.5% y/y (V-weak: LinkedIn relay of Monde de la Propreté,
+autumn 2026). Q2 2025 ≈ 113.2 (I, back-calculated). Values for 2024 and
+Q4 2023 not found (U). INSEE BtoB cleaning price index, Q1 2026 109.8 →
+Q2 2026 110.0, base 2021 (V, INSEE, 27 Aug 2026). ARC (a co-ownership
+association) reported cleaning contracts up 4–6% in 2024 because of the
+index (V). The Observatoire des Marchés Propreté / OpinionWay survey on
+price revision has been launched, but its results were not found
+(U).</td>
+<td><strong>Survives</strong></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Legal limits</td>
+<td>B2B prescription is 5 years (art. L110-4 Code de commerce) (V,
+secondary law-firm source). On 28 May 2026 the Nanterre commercial court
+awarded €51,853 of revisions but held 2017–2019 time-barred (V,
+secondary, Kohen Avocats, 23 Sep 2026). Lyon CA, 15 Jan 2026: no
+revision on an accepted firm price; Dijon CA, 7 Jul 2026: a precise
+clause is valid (V, secondary). In public contracts, revision is
+described as not retroactive (ANFH Q&amp;A, 2023). According to
+index-proprete.fr, the index was positively evaluated by the DGCCRF and
+INSEE (self-reported). It was built by the independent firm Xerfi
+Spécific from &quot;un échantillon de 1 500 entreprises issues du code NAF
+8121Z&quot; and combines 7 official indices (IPPE, SHBOE, ICHTR, IPPRI,
+SYNTEC, ILC, GAZO), so it plausibly meets L112-2 (I). Reevalo itself
+states &quot;pas un conseil juridique&quot; (V).</td>
+<td><strong>Survives with change</strong> (forward revisions only;
+arrears are a lawyer&#39;s call)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Changes within 12 months</td>
+<td>SMIC +1.6% from <strong>1 Dec 2026</strong>, announced on 9 Nov 2026
+by Labour Minister Jean-Pierre Farandou after the conférence sociale at
+Matignon. It anticipates the 1 Jan 2027 revaluation and includes the
+first coup de pouce since 2012. The decree is pending. Net pay will be
+about €1,502/month (AFP); gross is estimated at about €12.51/h, or about
+€1,897/month (le-smic.fr, estimate). 64 branches will have entry grid
+levels below the SMIC (V, economiematin). The propreté entry level of
+€12.63 should stay above €12.51 (I). The index does not directly capture
+employer-contribution changes: its main wage input, SHBOE (weight 0.65),
+&quot;suit le salaire brut de base&quot; (V, index-proprete.fr methodology note).
+Q3 2026 index due end Q4 2026 at the earliest (V).</td>
+<td><strong>Survives (expands)</strong></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>DIY with AI</td>
+<td>No free French GPT or page found that produces an Index Propreté
+calculation <strong>and</strong> a letter (U). The building pieces are
+free: simulator, clause on achat-proprete.com, Reevalo free calculator,
+generic AI.</td>
+<td><strong>Weakened</strong></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Access &amp; prospect count</td>
+<td>Societe.com caps its 81.21Z Doubs list at 1,000 firms; La Gazette
+annuaire lists 793 firms (V). Only about 6% of 81.21Z firms nationally
+are employers (15,300 of 245,708, fichesociete.fr, 1 Nov 2026). This
+matches FEP&#39;s own figure of &quot;près de 15 000 entreprises d&#39;au moins un
+salarié&quot; (26 Sep 2024) (V). That gives <strong>≈ 50–125 employer firms
+in Doubs</strong> (I; the official count via the Annuaire des
+Entreprises was not run, U). CNIL: B2B email is allowed on legitimate
+interest with information and opt-out. B2B phone needs information +
+opposition; consumer phone needs prior consent since 11 Aug 2026 (V,
+CNIL). Reconstructed professional emails are allowed case by case; keep
+them only if contact is made; exclude objectors immediately (V, CNIL, 16
+Oct 2026).</td>
+<td><strong>Weakened</strong></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Competitors / hosts</td>
+<td>Doubs is covered by FEP Grand Est (Dijon), which gives members
+access to reserved Monde de la Propreté tools (V). FEP members employ
+&quot;80% des effectifs de la branche&quot; (FEP, 26 Sep 2024). No accountant or
+CPME/CCI Doubs offer was found (U). Reevalo could serve as the back-end
+tool rather than a rival (I).</td>
+<td><strong>Weakened</strong> (FEP members are a weaker target)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="updated-gain-calculation">Updated gain calculation</h2>
+<p>Formula: P1 = P0 × I1/I0, with I1 = Q2 2026 = 116.0 (to be re-checked
+on index-proprete.fr). Annual contract book = €60,000 excl. VAT (A, user
+scenario).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Last revision used index of…</th>
+<th>I0</th>
+<th>Drift to Q2 2026</th>
+<th>€/year on €60k</th>
+<th>€/year on €20k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Never revised (base Q1 2022)</td>
+<td>100 (V)</td>
+<td>+16.0%</td>
+<td>€9,600</td>
+<td>€3,200</td>
+</tr>
+<tr class="even">
+<td>Q2 2023</td>
+<td>106.6 (V)</td>
+<td>+8.8%</td>
+<td>€5,290</td>
+<td>€1,760</td>
+</tr>
+<tr class="odd">
+<td>Q3 2023</td>
+<td>108.6 (V)</td>
+<td>+6.8%</td>
+<td>€4,090</td>
+<td>€1,360</td>
+</tr>
+<tr class="even">
+<td>2024 quarters</td>
+<td>U</td>
+<td>≈ +3–6% (I, interpolation)</td>
+<td>≈ €1,800–3,600</td>
+<td>≈ €600–1,200</td>
+</tr>
+<tr class="odd">
+<td>Q2 2025</td>
+<td>≈113.2 (I)</td>
+<td>+2.5%</td>
+<td>€1,500</td>
+<td>€500</td>
+</tr>
+<tr class="even">
+<td>Q1 2026</td>
+<td>114.5 (V-weak)</td>
+<td>+1.3%</td>
+<td>€790</td>
+<td>€260</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reading:</strong> the low end (about 1% on €60k, about
+€600/year) holds, because even a revision made in early 2026 leaves at
+least +1.3%. The €190 guarantee only triggers when indexed contracts
+total below about €14,600/year at +1.3%, or below €7,600/year at +2.5%.
+Honest counterfactual: the real gain is the revision the owner would
+otherwise have <strong>skipped or delayed</strong>. If they already
+apply clauses on time, the value is only time saved. Labour cost: the
+FEP Livre Bleu 2017 states that &quot;le coût de revient est constitué à 80 %
+de la masse salariale&quot;, and FEP describes the sector as
+&quot;structurellement à faibles marges (3% en moyenne)&quot; (26 Sep 2024). A
++1.6% SMIC rise, if passed through the grid, therefore adds about +1.3%
+to cost (I).</p>
+<h2 id="hard-criteria">Hard criteria</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Status</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Money</td>
+<td><strong>Met</strong> (I)</td>
+<td>€790–€5,290/year at stake on €60k vs a €190 fee</td>
+</tr>
+<tr class="even">
+<td>Recurrence</td>
+<td><strong>Unverified</strong></td>
+<td>Anniversaries recur every year; a €29/month re-run competes with
+Reevalo at €39</td>
+</tr>
+<tr class="odd">
+<td>Reason to act now</td>
+<td><strong>Met</strong> (V)</td>
+<td>SMIC +1.6% on 1 Dec 2026; January anniversaries; index +2.5%
+y/y</td>
+</tr>
+<tr class="even">
+<td>Access</td>
+<td><strong>Unverified / weakened</strong></td>
+<td>About 50–125 employers in Doubs (I); cold-email replies uncertain;
+B2B phone allowed</td>
+</tr>
+<tr class="odd">
+<td>Build within 20 h</td>
+<td><strong>Met</strong> (I)</td>
+<td>Spreadsheet + 4 templates + one-page PDF</td>
+</tr>
+<tr class="even">
+<td>Developer fit</td>
+<td><strong>Met</strong></td>
+<td>Data, documents, no regulated act</td>
+</tr>
+<tr class="odd">
+<td>Market</td>
+<td><strong>Unverified</strong></td>
+<td>No published share of unapplied clauses; Observatoire results
+pending</td>
+</tr>
+</tbody>
+</table>
+<h2 id="biggest-remaining-risks">Biggest remaining risks</h2>
+<ol type="1">
+<li>Many small firms have <strong>no clause</strong>: they sell on a
+quote with a firm price. Then only renegotiation is possible (V), and
+the product shrinks to a letter of request.</li>
+<li>Owners may do it themselves in 10 minutes with the free simulator or
+Reevalo once they are reminded. The free proof can cannibalise the
+sale.</li>
+<li>Pool too small. With about 50–125 employers and unknown reply rates,
+10 conversations in 14 days needs about 40–60 contacts, so start with
+neighbouring départements.</li>
+<li>The Q2 2026 value of 116.0 comes from a secondary relay. Check it on
+the source site before any outreach.</li>
+<li>Client pushback or termination risk on open-ended contracts. The
+owner must weigh this risk; the developer does not decide.</li>
+</ol>
+<h2 id="required-changes-the-with-changes">Required changes (the &quot;WITH
+CHANGES&quot;)</h2>
+<ol type="1">
+<li><strong>Promise forward revisions</strong>, not back-billing.
+Arrears go in an optional appendix, &quot;à valider par votre avocat ou
+expert-comptable&quot;.</li>
+<li><strong>Phone-first outreach</strong> to employer firms in Doubs
+<strong>plus Jura, Haute-Saône and Territoire de Belfort from day
+1</strong>. Email only to published generic addresses; no reconstructed
+addresses.</li>
+<li><strong>Position explicitly against DIY</strong>: &quot;Vous pouvez le
+faire vous-même sur index-proprete.fr ; nous le faisons pour vous en 48
+h, clause par clause, avec les courriers prêts et le calendrier.&quot;</li>
+<li><strong>Screen first</strong>: sell only if at least one clause
+exists and at least one anniversary was missed or delayed.</li>
+<li>Replace the €29/month re-run with an <strong>annual &quot;pack
+anniversaires&quot; at €90 excl. VAT/year</strong>, or €29/month only for
+firms with more than 10 contracts. Do not try to undercut Reevalo on
+software.</li>
+</ol>
+<hr />
+<h1 id="guide-de-mise-en-œuvre-en-français">Guide de mise en œuvre (en
+français)</h1>
+<h2 id="nom-du-projet---dossier-dindexation-2027--révision-clé-en-main-pour-entreprises-de-propreté-">Nom
+du projet : « Dossier d&#39;indexation 2027 — révision clé en main pour
+entreprises de propreté »</h2>
+<h3 id="1-objectif-et-promesse-en-une-phrase">1. Objectif et promesse en
+une phrase</h3>
+<p><strong>Promesse :</strong> « En 48 h, nous lisons vos clauses de
+prix, calculons le prix révisé dû avec l&#39;Index Propreté et préparons vos
+courriers prêts à envoyer : si l&#39;écart récupérable est inférieur à 190
+€/an, vous ne payez rien. »</p>
+<p><strong>Objectif à 14 jours :</strong> 1 devis signé à 190 € HT, avec
+une date de paiement.</p>
+<h3 id="2-pour-qui-et-comment-lister-les-prospects">2. Pour qui, et
+comment lister les prospects</h3>
+<p><strong>Cible :</strong></p>
+<ul>
+<li>Dirigeants d&#39;entreprises de propreté de 1 à 50 salariés.</li>
+<li>Code NAF 81.21Z (en option 81.22Z).</li>
+<li>Doubs (25) d&#39;abord, puis Jura (39), Haute-Saône (70), Territoire de
+Belfort (90).</li>
+<li>Franchisés et affiliés inclus, s&#39;ils sont des sociétés
+distinctes.</li>
+<li>Priorité aux entreprises <strong>non adhérentes FEP</strong> : les
+adhérents ont déjà des outils.</li>
+</ul>
+<p><strong>Construire la liste (2 h) :</strong></p>
+<ol type="1">
+<li>Ouvrir l&#39;Annuaire des Entreprises
+(annuaire-entreprises.data.gouv.fr).</li>
+<li>Filtres : activité 81.21Z ; département 25 ; état « en activité » ;
+tranche d&#39;effectif de 1 à 49 salariés.</li>
+<li>Noter le total affiché. C&#39;est votre <strong>compte officiel</strong>
+: écrire la date et les filtres utilisés.</li>
+<li>Garder uniquement les sociétés dont le <strong>siège</strong> est
+dans le département.</li>
+<li>Retirer : les entreprises individuelles sans salarié, les doublons
+d&#39;établissements et les filiales de grands groupes.</li>
+<li>Recommencer pour 39, 70 et 90.</li>
+<li>Pour chaque ligne, chercher le site web et noter le
+<strong>téléphone standard</strong> et l&#39;<strong>adresse générique
+publiée</strong> (contact@, info@).</li>
+<li>Colonnes du tableur : SIREN | Nom | Ville | Effectif | Site |
+Téléphone | Email générique | Source | Date | Statut | Opposition
+(O/N).</li>
+</ol>
+<p><strong>Règles RGPD / prospection B2B (à respecter à la lettre)
+:</strong></p>
+<ul>
+<li>Email : autorisé sans consentement préalable si le message concerne
+le métier du destinataire. Chaque email doit dire <strong>qui vous
+êtes</strong>, <strong>d&#39;où viennent les coordonnées</strong> et offrir
+<strong>un moyen simple de s&#39;opposer</strong>.</li>
+<li>Téléphone vers un professionnel : information + droit d&#39;opposition.
+Ne pas appeler le portable personnel d&#39;un entrepreneur individuel :
+depuis le 11 août 2026, démarcher un consommateur par téléphone exige
+son consentement préalable.</li>
+<li>Adresses reconstituées (prenom.nom@) : à éviter. Si vous en
+utilisez, ne les gardez que si un contact a eu lieu, et excluez
+immédiatement toute personne qui s&#39;oppose (CNIL, 16 octobre 2026).</li>
+<li>Toute opposition : la noter, ne plus jamais contacter, supprimer les
+données.</li>
+<li>Supprimer les prospects sans réponse au bout de 3 mois.</li>
+</ul>
+<h3 id="3-loffre">3. L&#39;offre</h3>
+<p><strong>Livré :</strong></p>
+<ol type="1">
+<li>Un tableau par contrat (jusqu&#39;à 10) : prix actuel, clause, indice,
+I0, I1, prix révisé, écart €/an.</li>
+<li>Une synthèse d&#39;une page : total récupérable €/an et contrats
+prioritaires.</li>
+<li>Un projet de courrier de notification par contrat.</li>
+<li>Un calendrier des dates anniversaires et des préavis (fichier .ics +
+tableau).</li>
+<li>En option : une note « rappels éventuels », signalée <strong>à faire
+valider par un avocat ou un expert-comptable</strong>.</li>
+</ol>
+<p><strong>Prix :</strong> 190 € HT pour 10 contrats maximum. 15 € HT
+par contrat supplémentaire.</p>
+<p><strong>Paiement :</strong> facture émise à la livraison, payable à
+30 jours.</p>
+<p><strong>Garantie (texte exact) :</strong> « Si le montant annuel
+récupérable, calculé à partir de vos propres clauses et des valeurs
+publiées de l&#39;indice prévu au contrat, est inférieur à 190 € HT par an,
+la facture est annulée ou intégralement remboursée. Le calcul figure
+dans le dossier remis. »</p>
+<p><strong>Suivi en option :</strong> pack anniversaires annuel à 90 €
+HT par an (mise à jour à chaque nouvelle valeur d&#39;indice et courriers de
+l&#39;année).</p>
+<p><strong>Validé par le client ou son expert :</strong> le choix
+d&#39;envoyer ou non, le ton des courriers, l&#39;interprétation de la clause en
+cas de doute, tout rappel sur le passé.</p>
+<p><strong>Ce que le développeur ne fait jamais :</strong></p>
+<ul>
+<li>Donner un avis juridique.</li>
+<li>Signer ou envoyer un courrier au nom du client.</li>
+<li>Contacter le client final.</li>
+<li>Garantir que le client final acceptera.</li>
+</ul>
+<h3 id="4-la-preuve-gratuite-pdf-dune-page-sans-aucune-donnée-demandée">4.
+La preuve gratuite (PDF d&#39;une page, sans aucune donnée demandée)</h3>
+<p><strong>Titre :</strong> « Où en est votre prix ? Index Propreté
+2022–2026 »</p>
+<p><strong>Sections :</strong></p>
+<ol type="1">
+<li><strong>Série de l&#39;Index Propreté</strong> (base 100 au T1 2022).
+Valeurs sourcées : T2 2023 = 106,6 ; T3 2023 = 108,6 ; T1 2026 = 114,5 ;
+T2 2026 = 116,0 (+1,3 % sur le trimestre, +2,5 % sur un an). Recopier
+les autres trimestres à la main depuis le graphique d&#39;index-proprete.fr
+(Jour 1) et vérifier 116,0. Mentionner que certaines valeurs peuvent
+être révisées (r).</li>
+<li><strong>Coûts salariaux, avec dates :</strong> SMIC 11,88 € → 12,02
+€ (1er janvier 2026) → 12,31 € (1er juin 2026) → hausse de +1,6 %
+annoncée pour le 1er décembre 2026 (environ 12,51 €/h, décret attendu).
+Premier niveau de la grille CCN propreté : 12,63 € depuis le 1er avril
+2026.</li>
+<li><strong>Table de dérive</strong> : « Votre dernière révision
+utilisait l&#39;indice de… → hausse due aujourd&#39;hui » (T2 2023 : +8,8 % ; T3
+2023 : +6,8 % ; T2 2025 : environ +2,5 % ; T1 2026 : +1,3 %).</li>
+<li><strong>Exemple chiffré</strong> : 5 000 € HT par mois de contrats,
+révision au T3 2023 → environ 4 090 € par an non facturés.</li>
+<li><strong>Formule</strong> : P1 = P0 × I1 / I0, avec un exemple pas à
+pas.</li>
+<li><strong>Squelette de courrier</strong> de 6 lignes.</li>
+<li><strong>Encadré</strong> : « Calcul indicatif. Votre clause prime.
+Ce document n&#39;est pas un conseil juridique. »</li>
+</ol>
+<h3 id="5-outils-et-modèles-à-construire-budget--20-h">5. Outils et
+modèles à construire (budget : 20 h)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Tâche</th>
+<th>Heures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Liste de prospects (4 départements)</td>
+<td>2,0</td>
+</tr>
+<tr class="even">
+<td>Calculateur tableur</td>
+<td>4,0</td>
+</tr>
+<tr class="odd">
+<td>3 modèles de courrier + calendrier</td>
+<td>3,0</td>
+</tr>
+<tr class="even">
+<td>PDF de preuve gratuite</td>
+<td>2,0</td>
+</tr>
+<tr class="odd">
+<td>Emails, script, devis, facture</td>
+<td>1,5</td>
+</tr>
+<tr class="even">
+<td>Prospection (emails, appels)</td>
+<td>5,0</td>
+</tr>
+<tr class="odd">
+<td>Appels découverte + livraison du 1er client</td>
+<td>2,5</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>20,0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculateur — champs d&#39;entrée par contrat :</strong></p>
+<ul>
+<li>Client final (nom, type : privé, public, syndic).</li>
+<li>Montant HT mensuel et annuel actuel.</li>
+<li>Date de signature, date anniversaire, préavis de notification.</li>
+<li>Clause : texte copié, indice nommé, formule (simple ou part fixe +
+parts indexées), plafond ou plancher éventuel.</li>
+<li>I0 : trimestre et valeur. Date de la dernière révision
+appliquée.</li>
+<li>Contrat à durée déterminée ou indéterminée.</li>
+</ul>
+<p><strong>Feuille « Indices » :</strong> Index Propreté par trimestre,
+SMIC, grille CCN, source et date de chaque valeur.</p>
+<p><strong>Sorties :</strong> coefficient I1/I0 ; prix révisé ; écart
+€/mois et €/an ; total du portefeuille ; contrôle de la garantie (total
+&lt; 190 € ?) ; prochaine date d&#39;envoi = anniversaire − préavis.</p>
+<p><strong>Données à demander au client :</strong></p>
+<ul>
+<li>La liste de ses contrats récurrents avec leur montant.</li>
+<li>La copie des clauses de prix (pas le contrat entier si
+possible).</li>
+<li>La date et la valeur de la dernière révision appliquée.</li>
+<li>Si la clause est absente, la date du dernier prix accepté.</li>
+</ul>
+<p><strong>Modèle A — notification de révision (clause existante)
+:</strong></p>
+<blockquote>
+<p>Objet : Révision annuelle du prix — contrat [RÉFÉRENCE] Madame,
+Monsieur, Conformément à l&#39;article [N°] de notre contrat du
+[DATE_SIGNATURE], le prix est révisé chaque année au [DATE_ANNIVERSAIRE]
+selon la formule P1 = P0 × [INDICE] I1 / I0. Indice de référence (I0) :
+[INDICE] [TRIMESTRE_0] = [VALEUR_0]. Dernier indice publié (I1) :
+[TRIMESTRE_1] = [VALEUR_1]. Le prix mensuel HT passe donc de [P0] € à
+[P1] € à compter du [DATE_EFFET]. Le détail du calcul est joint. Nous
+restons à votre disposition. [SIGNATURE DU DIRIGEANT]</p>
+</blockquote>
+<p><strong>Modèle B — demande de renégociation (pas de clause)
+:</strong></p>
+<blockquote>
+<p>Objet : Proposition d&#39;actualisation du prix — contrat [RÉFÉRENCE]
+Depuis notre dernier prix du [DATE], le salaire minimum est passé de [X]
+€ à [Y] € de l&#39;heure et l&#39;Index Propreté de la branche de [I0] à [I1].
+Nous vous proposons un nouveau prix de [P1] € HT par mois à compter du
+[DATE], et nous vous proposons d&#39;ajouter une clause de révision
+annuelle. Pouvons-nous en parler avant le [DATE] ?</p>
+</blockquote>
+<p><strong>Modèle C — note de calcul</strong> (annexe à chaque courrier)
+: tableau I0, I1, coefficient, P0, P1, sources et dates.</p>
+<p><strong>Calendrier :</strong> un événement par contrat à «
+anniversaire − préavis − 15 jours », intitulé « Envoyer révision
+[CLIENT] » ; export .ics.</p>
+<h3 id="6-plan-jour-par-jour-jour-1--mardi-10-novembre-2026">6. Plan
+jour par jour (Jour 1 = mardi 10 novembre 2026)</h3>
+<p><strong>Jour 1 (1,5 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Vérifier sur index-proprete.fr la
+valeur du T2 2026 et recopier toute la série.</label></li>
+<li><label><input type="checkbox"></input>Créer la feuille « Indices » avec
+les sources.</label></li>
+</ul>
+<p><strong>Jour 2 (2 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Construire la liste du 25 : filtres,
+compte, nettoyage.</label></li>
+<li><label><input type="checkbox"></input>Construire les listes 39, 70,
+90.</label></li>
+</ul>
+<p><strong>Jour 3 (2 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Construire le calculateur et le
+tester sur 3 cas fictifs.</label></li>
+</ul>
+<p><strong>Jour 4 (2 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Rédiger les modèles A, B et C, puis
+le calendrier .ics.</label></li>
+</ul>
+<p><strong>Jour 5 (2 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Créer le PDF de preuve
+gratuite.</label></li>
+<li><label><input type="checkbox"></input>Préparer l&#39;email, le script, le
+devis et la facture.</label></li>
+</ul>
+<p><strong>Jour 6 (samedi, 1 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Envoyer 20 emails (Doubs en
+priorité), en un seul envoi personnalisé.</label></li>
+</ul>
+<p><strong>Jour 7 (dimanche)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Repos. Relire le
+script.</label></li>
+</ul>
+<p><strong>Jour 8 (lundi, 1,5 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Appeler 15 entreprises entre 8 h et
+9 h 30 ou entre 17 h et 18 h 30.</label></li>
+<li><label><input type="checkbox"></input>Noter les réponses et les
+oppositions.</label></li>
+</ul>
+<p><strong>Jour 9 (1 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Envoyer 20 emails (39, 70,
+90).</label></li>
+<li><label><input type="checkbox"></input>Rappeler les absents de la
+veille.</label></li>
+</ul>
+<p><strong>Jour 10 (1 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Faire 2 à 3 appels découverte de 15
+min.</label></li>
+<li><label><input type="checkbox"></input>Envoyer le devis dans l&#39;heure qui
+suit chaque appel positif.</label></li>
+</ul>
+<p><strong>Jour 11 (1 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Relancer par email les contacts du
+Jour 6 sans réponse.</label></li>
+<li><label><input type="checkbox"></input>Faire 10 appels.</label></li>
+</ul>
+<p><strong>Jour 12 (1,5 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Faire les appels découverte
+restants.</label></li>
+<li><label><input type="checkbox"></input>Commencer le premier dossier dès
+réception des clauses.</label></li>
+</ul>
+<p><strong>Jour 13 (1,5 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Relancer les devis
+envoyés.</label></li>
+<li><label><input type="checkbox"></input>Livrer le premier dossier si les
+clauses ont été reçues.</label></li>
+</ul>
+<p><strong>Jour 14 (1 h)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Faire le bilan des
+indicateurs.</label></li>
+<li><label><input type="checkbox"></input>Décider : continuer, ajuster ou
+arrêter.</label></li>
+</ul>
+<h3 id="7-textes-prêts-à-lemploi">7. Textes prêts à l&#39;emploi</h3>
+<p><strong>Email de premier contact</strong></p>
+<blockquote>
+<p>Objet : SMIC +1,6 % au 1er décembre : vos prix de contrats
+suivent-ils ? Bonjour, Je m&#39;appelle [PRÉNOM NOM], [ville]. J&#39;aide les
+entreprises de propreté à appliquer leurs clauses de révision de prix.
+L&#39;Index Propreté est passé de 108,6 (T3 2023) à 116,0 (T2 2026), et le
+SMIC augmente de 1,6 % le 1er décembre. Un contrat révisé pour la
+dernière fois en 2023 peut avoir près de 7 % de retard. Je vous offre
+une fiche d&#39;une page (indices, SMIC, table de rattrapage, formule).
+Aucune donnée n&#39;est demandée. Répondez simplement « fiche ». Si vous le
+souhaitez, je fais ensuite le calcul pour vos contrats : 190 € HT pour
+10 contrats, et rien à payer si l&#39;écart est inférieur à 190 € par an.
+Bien cordialement, [PRÉNOM NOM] — [SIRET] — [téléphone] <em>Vos
+coordonnées professionnelles proviennent de [votre site / l&#39;Annuaire des
+Entreprises]. Elles servent uniquement à vous proposer ce service. Pour
+ne plus recevoir de message, répondez « STOP » : vous serez retiré
+immédiatement. Vous pouvez exercer vos droits (accès, effacement) à
+[email].</em></p>
+</blockquote>
+<p><strong>Relance (J+5)</strong></p>
+<blockquote>
+<p>Objet : Re : vos prix de contrats Bonjour, je me permets une seule
+relance. La fiche « Où en est votre prix ? » est prête et gratuite.
+Dois-je vous l&#39;envoyer ? Pour ne plus être contacté : « STOP ».</p>
+</blockquote>
+<p><strong>Script téléphonique (90 secondes)</strong></p>
+<ol type="1">
+<li>« Bonjour, [prénom], je ne vends pas de produits d&#39;entretien.
+Pouvez-vous me passer le dirigeant ou la personne qui fait les devis ?
+»</li>
+<li>« J&#39;aide les entreprises de propreté à vérifier si leurs contrats
+ont bien été révisés. Avec la hausse du SMIC au 1er décembre, c&#39;est le
+bon moment. Avez-vous 2 minutes ? »</li>
+<li>Poser les questions de tri (ci-dessous).</li>
+<li>Si oui à Q1 et à Q2 : « Je vous envoie une fiche gratuite et on
+prend 15 minutes cette semaine ? »</li>
+<li>Si refus : « Je note de ne plus vous appeler. Bonne journée. »</li>
+</ol>
+<p><strong>Questions de tri</strong></p>
+<ol type="1">
+<li>Vos contrats récurrents ont-ils une clause de révision de prix ?
+(oui / non / ne sait pas)</li>
+<li>L&#39;avez-vous appliquée sur tous vos contrats depuis janvier 2026
+?</li>
+<li>Quel indice : Index Propreté, ICHT, autre, aucun ?</li>
+<li>Combien de contrats récurrents, et quel montant mensuel total
+environ ?</li>
+<li>Êtes-vous adhérent à la FEP ?</li>
+</ol>
+<p><strong>Appel découverte de 15 minutes</strong></p>
+<ul>
+<li>0–2 min : objectif de l&#39;appel et rappel « pas de conseil juridique
+».</li>
+<li>2–7 min : contrats, clauses, dernières révisions, prochains
+anniversaires.</li>
+<li>7–10 min : calcul en direct sur un contrat avec la table de
+dérive.</li>
+<li>10–13 min : offre, prix, garantie, délai de 48 h.</li>
+<li>13–15 min : envoi du devis et liste des documents à fournir.</li>
+</ul>
+<p><strong>Devis</strong></p>
+<blockquote>
+<p>DEVIS n° [AAAA-001] — Date : [JJ/MM/2026] — Valable 15 jours
+Prestataire : [NOM], [ADRESSE], SIRET [X]. Client : [RAISON SOCIALE],
+SIREN [X]. Prestation : « Dossier d&#39;indexation 2027 » — analyse des
+clauses de prix de 10 contrats maximum, calcul des prix révisés selon
+l&#39;indice contractuel, projets de courriers de notification, calendrier
+des dates anniversaires. Livraison sous 48 h ouvrées après réception des
+clauses. Prix : 190,00 € HT [TVA 20 % : 38,00 € — TTC 228,00 €] ou [TVA
+non applicable, art. 293 B du CGI]. Facture émise à la livraison.
+<strong>Paiement à 30 jours date de facture, soit au plus tard le
+[DATE].</strong> Virement : [IBAN]. Garantie : si le montant annuel
+récupérable calculé selon vos clauses et les indices publiés est
+inférieur à 190 € HT, la facture est annulée ou remboursée. Limites :
+les documents sont des projets. Le client décide de leur envoi et les
+fait valider si besoin par son conseil. Aucune prestation de conseil
+juridique. Bon pour accord, date et signature : ____________</p>
+</blockquote>
+<p><strong>Email de livraison</strong></p>
+<blockquote>
+<p>Objet : Votre Dossier d&#39;indexation 2027 — [ENTREPRISE] Bonjour
+[Prénom], voici votre dossier :</p>
+<ol type="1">
+<li>la synthèse : [X] € HT par an récupérables ;</li>
+<li>le tableau par contrat ;</li>
+<li>les [N] projets de courriers ;</li>
+<li>le calendrier à importer. Prochaine action : relire les courriers et
+les faire valider si vous le souhaitez, puis envoyer avant le [DATE]
+pour [CLIENT]. La facture de 190 € HT est jointe, payable au [DATE]. Je
+reste disponible 15 minutes pour toute question.</li>
+</ol>
+</blockquote>
+<h3 id="8-règle-darrêt-et-indicateurs">8. Règle d&#39;arrêt et
+indicateurs</h3>
+<p><strong>Objectifs à 14 jours :</strong> 60 contacts (40 emails + 20 à
+30 appels) → 10 conversations → 4 appels découverte → 2 devis → 1
+signature.</p>
+<p><strong>Arrêter si :</strong></p>
+<ul>
+<li>Moins de 3 des 10 premières conversations révèlent une clause non
+appliquée ou appliquée en retard.</li>
+<li>0 devis signé après 15 conversations.</li>
+<li>Plus de la moitié des entreprises n&#39;ont aucune clause (le produit
+devient une simple lettre de renégociation : à repenser).</li>
+</ul>
+<p><strong>Ajuster si :</strong> les prospects répondent « je le fais
+avec le simulateur ». Proposer alors seulement le pack calendrier et
+courriers à 90 €.</p>
+<h3 id="9-après-la-première-vente">9. Après la première vente</h3>
+<ol type="1">
+<li>Proposer le pack anniversaires annuel (90 € HT) au moment de la
+livraison.</li>
+<li>Mettre à jour le calculateur à chaque nouvel Index Propreté (le T3
+2026 est attendu fin du T4 2026 au plus tôt).</li>
+<li>Demander une recommandation et un témoignage chiffré (« X € par an
+récupérés »).</li>
+<li>Étendre au Jura, à la Haute-Saône et au Territoire de Belfort, puis
+au code 81.22Z.</li>
+<li>Tester les syndics de copropriété et les donneurs d&#39;ordre comme
+canal (B2B2C), sans démarcher de particuliers.</li>
+<li>Envisager de vous appuyer sur un outil comme Reevalo pour le suivi,
+si le volume dépasse 10 clients.</li>
+</ol>
+<h3 id="10-risques-et-limites-à-retenir">10. Risques et limites à
+retenir</h3>
+<ul>
+<li>Pas de clause = pas de révision imposable : seulement une
+proposition de renégociation, et le client final peut résilier un
+contrat à durée indéterminée.</li>
+<li>Rappels sur le passé : prescription de 5 ans entre professionnels,
+mais une jurisprudence non uniforme. Ne jamais les promettre ; les
+renvoyer à un avocat.</li>
+<li>Valeurs d&#39;indice : toujours citer la source et la date. Certaines
+valeurs peuvent être révisées.</li>
+<li>L&#39;Index Propreté ne mesure pas directement les changements de
+cotisations patronales.</li>
+<li>Concurrence du « fait maison » (simulateur gratuit, Reevalo, IA) :
+votre valeur, c&#39;est le temps gagné et les courriers prêts.</li>
+<li>Données clients : ne demander que les clauses ; supprimer les
+documents 3 mois après la livraison.</li>
+</ul>
+<h2 id="caveats">Caveats</h2>
+<ul>
+<li>The Q2 2026 Index Propreté value (116.0) comes from a LinkedIn relay
+of Monde de la Propreté. Q2 2025 is back-calculated. All 2024 values are
+unverified.</li>
+<li>The 1 December 2026 SMIC figure (+1.6%) is announced; the decree and
+exact hourly rate are pending.</li>
+<li>The Doubs employer count is inferred, not counted. Do the official
+Annuaire des Entreprises count on Day 2.</li>
+<li>Legal sources are mostly secondary (law-firm blogs). Nothing here is
+legal advice.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Index Propreté (méthodologie, base, calendrier) : <a href="https://index-proprete.fr/">https://index-proprete.fr/</a></li>
+<li>FEP — nouvel index (T2 2023 = 106,6 ; 7 entreprises sur 10) : <a href="https://www.federation-proprete.com/index-reviser-prix-contrats-proprete/">https://www.federation-proprete.com/index-reviser-prix-contrats-proprete/</a></li>
+<li>Services Propreté — T3 2023 = 108,6 (14/02/2024) : <a href="https://services-proprete.fr/profession/23528/le-bon-demarrage-de-l-index-proprete">https://services-proprete.fr/profession/23528/le-bon-demarrage-de-l-index-proprete</a></li>
+<li>LinkedIn (relais Monde de la Propreté, T1/T2 2026) : <a href="https://www.linkedin.com/in/nathalie-pollet-768179335/">https://www.linkedin.com/in/nathalie-pollet-768179335/</a></li>
+<li>Services Propreté — Chiffres clés 2026 : <a href="https://services-proprete.fr/entreprises-marches/33063/chiffres-cles-sectoriels-la-croissance-flechit-dans-la-proprete">https://services-proprete.fr/entreprises-marches/33063/chiffres-cles-sectoriels-la-croissance-flechit-dans-la-proprete</a></li>
+<li>INSEE — indice prix BtoB nettoyage : <a href="https://www.insee.fr/fr/statistiques/serie/010766397">https://www.insee.fr/fr/statistiques/serie/010766397</a></li>
+<li>ARC copropriété — hausses 2024 : <a href="https://arc-copro.fr/documentation/attention-laugmentation-sensible-des-contrats-de-nettoyage-due-lindice-de-revision">https://arc-copro.fr/documentation/attention-laugmentation-sensible-des-contrats-de-nettoyage-due-lindice-de-revision</a></li>
+<li>Reevalo (tarifs, fonctionnalités) : <a href="https://reevalo.io/">https://reevalo.io/</a></li>
+<li>Clepsiidre : <a href="https://www.clepsiidre.fr/blog/r%C3%A9visions-de-prix-automatis%C3%A9es-la-fonctionnalit%C3%A9-incontournable-des-contrats-longue-dur%C3%A9e">https://www.clepsiidre.fr/blog/r%C3%A9visions-de-prix-automatis%C3%A9es-la-fonctionnalit%C3%A9-incontournable-des-contrats-longue-dur%C3%A9e</a></li>
+<li>Memsoft : <a href="https://aides.memsoft.fr/aide/gescom/contrat/indices_rev.htm">https://aides.memsoft.fr/aide/gescom/contrat/indices_rev.htm</a></li>
+<li>Achat Propreté — clause : <a href="https://www.achat-proprete.com/clauses-et-articles-types/clause-revision-prix/">https://www.achat-proprete.com/clauses-et-articles-types/clause-revision-prix/</a></li>
+<li>Observatoire des Marchés Propreté : <a href="https://www.monde-proprete.com/observatoire-marche-enquete">https://www.monde-proprete.com/observatoire-marche-enquete</a></li>
+<li>Kohen Avocats — Nanterre 28/05/2026 : <a href="https://kohenavocats.fr/2026/09/23/clause-revision-prix-indexation-activer-contester-calculer-2026/">https://kohenavocats.fr/2026/09/23/clause-revision-prix-indexation-activer-contester-calculer-2026/</a></li>
+<li>Kohen Avocats — Lyon/Dijon 2026 : <a href="https://kohenavocats.fr/2026/10/12/fournisseur-augmente-prix-contrat-contester-hausse-revision-resolution-2026/">https://kohenavocats.fr/2026/10/12/fournisseur-augmente-prix-contrat-contester-hausse-revision-resolution-2026/</a></li>
+<li>Prescription B2B 5 ans : <a href="https://kohenavocats.fr/2026/04/28/prescription-facture-impayee-b2b-delai-5-ans-point-depart-interruption/">https://kohenavocats.fr/2026/04/28/prescription-facture-impayee-b2b-delai-5-ans-point-depart-interruption/</a></li>
+<li>ANFH — rétroactivité : <a href="https://www.anfh.fr/sites/default/files/fichiers/compte_rendu_des_echanges_21.02.23_0.pdf">https://www.anfh.fr/sites/default/files/fichiers/compte_rendu_des_echanges_21.02.23_0.pdf</a></li>
+<li>SMIC +1,6 % au 1er décembre 2026 : <a href="https://www.ici.fr/infos/economie-social/le-smic-augmentera-d-1-6-en-decembre-pour-passer-a-1-502-euros-annonce-le-ministre-du-travail-5515726">https://www.ici.fr/infos/economie-social/le-smic-augmentera-d-1-6-en-decembre-pour-passer-a-1-502-euros-annonce-le-ministre-du-travail-5515726</a>
+; <a href="https://www.economiematin.fr/smic-hausse-1-6-pourcent-cout-travail-secteurs">https://www.economiematin.fr/smic-hausse-1-6-pourcent-cout-travail-secteurs</a>
+; <a href="https://www.compta-online.com/smic-horaire-montant-mensuel-brut-net-ao1021">https://www.compta-online.com/smic-horaire-montant-mensuel-brut-net-ao1021</a></li>
+<li>CNIL — reconstitution d&#39;adresses (16/10/2026) : <a href="https://cnil.fr/fr/reconstitution-adresses-professionnelles-quel-cadre">https://cnil.fr/fr/reconstitution-adresses-professionnelles-quel-cadre</a></li>
+<li>CNIL — démarchage téléphonique : <a href="https://cnil.fr/fr/webinaire-demarchage-telephonique">https://cnil.fr/fr/webinaire-demarchage-telephonique</a></li>
+<li>Prospection B2B 2026 : <a href="https://hellotrame.io/blog/prospection-b2b-rgpd-cnil">https://hellotrame.io/blog/prospection-b2b-rgpd-cnil</a></li>
+<li>FEP Grand Est : <a href="https://www.fep-grandest.com/presentation-fep-grand-est/">https://www.fep-grandest.com/presentation-fep-grand-est/</a></li>
+<li>Comptes NAF 81.21Z : <a href="https://fichesociete.fr/code-naf-ape/8121z-nettoyage-courant-des-batiments">https://fichesociete.fr/code-naf-ape/8121z-nettoyage-courant-des-batiments</a>
+; <a href="https://entreprises.lagazettefrance.fr/entreprise/recherche/annuaire/doubs-25/81-21Z">https://entreprises.lagazettefrance.fr/entreprise/recherche/annuaire/doubs-25/81-21Z</a>
+; <a href="https://www.societe.com/entreprises/doubs-25/nettoyage-courant-des-batiments-8121Z">https://www.societe.com/entreprises/doubs-25/nettoyage-courant-des-batiments-8121Z</a></li>
+</ul>
+</body>
+</html>

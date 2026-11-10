@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <link href="data:text/css,%0A%2Emarkdown%2Dbody%7B%2D%2Dbase%2Dsize%2D16%3A1rem%3B%2D%2Dbase%2Dsize%2D24%3A1%2E5rem%3B%2D%2Dbase%2Dsize%2D4%3A0%2E25rem%3B%2D%2Dbase%2Dsize%2D40%3A2%2E5rem%3B%2D%2Dbase%2Dsize%2D8%3A0%2E5rem%3B%2D%2Dbase%2Dtext%2Dweight%2Dmedium%3A500%3B%2D%2Dbase%2Dtext%2Dweight%2Dnormal%3A400%3B%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%3A600%3B%2D%2DfontStack%2Dmonospace%3Aui%2Dmonospace%2CSFMono%2DRegular%2CSF%20Mono%2CMenlo%2CConsolas%2CLiberation%20Mono%2Cmonospace%3B%2D%2DfontStack%2DsansSerif%3A%2Dapple%2Dsystem%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2C%22Noto%20Sans%22%2CHelvetica%2CArial%2Csans%2Dserif%2C%22Apple%20Color%20Emoji%22%2C%22Segoe%20UI%20Emoji%22%3B%2D%2DfgColor%2Daccent%3AHighlight%7D%40media%20%28prefers%2Dcolor%2Dscheme%3Adark%29%7B%2Emarkdown%2Dbody%2C%5Bdata%2Dtheme%3Ddark%5D%7Bcolor%2Dscheme%3Adark%3B%2D%2DfgColor%2Daccent%3A%234493f8%3B%2D%2DbgColor%2Dattention%2Dmuted%3A%23bb800926%3B%2D%2DbgColor%2Ddefault%3A%230d1117%3B%2D%2DbgColor%2Dmuted%3A%23151b23%3B%2D%2DbgColor%2Dneutral%2Dmuted%3A%23656c7633%3B%2D%2DborderColor%2Daccent%2Demphasis%3A%231f6feb%3B%2D%2DborderColor%2Dattention%2Demphasis%3A%239e6a03%3B%2D%2DborderColor%2Ddanger%2Demphasis%3A%23da3633%3B%2D%2DborderColor%2Ddefault%3A%233d444d%3B%2D%2DborderColor%2Ddone%2Demphasis%3A%238957e5%3B%2D%2DborderColor%2Dsuccess%2Demphasis%3A%23238636%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%239198a1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%23f85149%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%23b62324%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%239198a1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%2379c0ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%23a5d6ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%23d2a8ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%237ee787%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%23ff7b72%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%235a1e02%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%23ffdfb6%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%2367060c%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%23ffdcd7%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%231f6feb%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%231158c7%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%23033a16%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%23aff5b4%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%23f2cc60%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%23d2a8ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%23f0f6fc%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%23a5d6ff%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%237ee787%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%233d444d%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%23ffa657%3B%2D%2DfgColor%2Dattention%3A%23d29922%3B%2D%2DfgColor%2Ddanger%3A%23f85149%3B%2D%2DfgColor%2Ddefault%3A%23f0f6fc%3B%2D%2DfgColor%2Ddone%3A%23ab7df8%3B%2D%2DfgColor%2Dmuted%3A%239198a1%3B%2D%2DfgColor%2Dsuccess%3A%233fb950%3B%2D%2DborderColor%2Dmuted%3A%233d444db3%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3Avar%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3Avar%28%2D%2DfgColor%2Ddanger%29%3B%2D%2Dfocus%2DoutlineColor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%2D%2DborderColor%2Dneutral%2Dmuted%3Avar%28%2D%2DborderColor%2Dmuted%29%7D%7D%40media%20%28prefers%2Dcolor%2Dscheme%3Alight%29%7B%2Emarkdown%2Dbody%2C%5Bdata%2Dtheme%3Dlight%5D%7Bcolor%2Dscheme%3Alight%3B%2D%2DfgColor%2Ddanger%3A%23d1242f%3B%2D%2DbgColor%2Dattention%2Dmuted%3A%23fff8c5%3B%2D%2DbgColor%2Dmuted%3A%23f6f8fa%3B%2D%2DbgColor%2Dneutral%2Dmuted%3A%23818b981f%3B%2D%2DborderColor%2Daccent%2Demphasis%3A%230969da%3B%2D%2DborderColor%2Dattention%2Demphasis%3A%239a6700%3B%2D%2DborderColor%2Ddanger%2Demphasis%3A%23cf222e%3B%2D%2DborderColor%2Ddefault%3A%23d1d9e0%3B%2D%2DborderColor%2Ddone%2Demphasis%3A%238250df%3B%2D%2DborderColor%2Dsuccess%2Demphasis%3A%231a7f37%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%2359636e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%2382071e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%23cf222e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%23f6f8fa%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%2359636e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%230a3069%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%236639ba%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3Avar%28%2D%2DfgColor%2Ddanger%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%23cf222e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%23ffd8b5%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%23953800%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%23ffebe9%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%2382071e%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%230550ae%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%23d1d9e0%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%23dafbe1%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%23116329%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%233b2300%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%238250df%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%230a3069%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%23116329%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%23818b98%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%23953800%3B%2D%2DfgColor%2Daccent%3A%230969da%3B%2D%2DfgColor%2Dattention%3A%239a6700%3B%2D%2DfgColor%2Ddone%3A%238250df%3B%2D%2DfgColor%2Dmuted%3A%2359636e%3B%2D%2DfgColor%2Dsuccess%3A%231a7f37%3B%2D%2DbgColor%2Ddefault%3A%23ffffff%3B%2D%2DborderColor%2Dmuted%3A%23d1d9e0b3%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3Avar%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%231f2328%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%231f2328%3B%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%231f2328%3B%2D%2DfgColor%2Ddefault%3A%231f2328%3B%2D%2Dfocus%2DoutlineColor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%2D%2DborderColor%2Dneutral%2Dmuted%3Avar%28%2D%2DborderColor%2Dmuted%29%7D%7D%2Emarkdown%2Dbody%7B%2Dms%2Dtext%2Dsize%2Dadjust%3A100%25%3B%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A100%25%3Bmargin%3A0%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2DsansSerif%2C%20%2Dapple%2Dsystem%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20%22Noto%20Sans%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%29%3Bfont%2Dsize%3A16px%3Bline%2Dheight%3A1%2E5%3Bword%2Dwrap%3Abreak%2Dword%7D%2Emarkdown%2Dbody%20a%7Btext%2Ddecoration%3Aunderline%3Btext%2Dunderline%2Doffset%3A%2E2rem%7D%2Emarkdown%2Dbody%20%2Eocticon%7Bdisplay%3Ainline%2Dblock%3Bfill%3AcurrentColor%3Bvertical%2Dalign%3Atext%2Dbottom%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%7Bwidth%3A16px%3Bheight%3A16px%3Bcontent%3A%27%20%27%3Bdisplay%3Ainline%2Dblock%3Bbackground%2Dcolor%3AcurrentColor%3B%2Dwebkit%2Dmask%2Dimage%3Aurl%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%3Bmask%2Dimage%3Aurl%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%7D%2Emarkdown%2Dbody%20details%2C%2Emarkdown%2Dbody%20figcaption%2C%2Emarkdown%2Dbody%20figure%7Bdisplay%3Ablock%7D%2Emarkdown%2Dbody%20summary%7Bdisplay%3Alist%2Ditem%7D%2Emarkdown%2Dbody%20%5Bhidden%5D%7Bdisplay%3Anone%21important%7D%2Emarkdown%2Dbody%20a%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bcolor%3Avar%28%2D%2DfgColor%2Daccent%29%3Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20abbr%5Btitle%5D%7Bborder%2Dbottom%3Anone%3B%2Dwebkit%2Dtext%2Ddecoration%3Aunderline%20dotted%3Btext%2Ddecoration%3Aunderline%20dotted%7D%2Emarkdown%2Dbody%20b%2C%2Emarkdown%2Dbody%20strong%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20dfn%7Bfont%2Dstyle%3Aitalic%7D%2Emarkdown%2Dbody%20h1%7Bmargin%3A%2E67em%200%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bpadding%2Dbottom%3A%2E3em%3Bfont%2Dsize%3A2em%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20mark%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dattention%2Dmuted%29%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20small%7Bfont%2Dsize%3A90%25%7D%2Emarkdown%2Dbody%20sub%2C%2Emarkdown%2Dbody%20sup%7Bfont%2Dsize%3A75%25%3Bline%2Dheight%3A0%3Bposition%3Arelative%3Bvertical%2Dalign%3Abaseline%7D%2Emarkdown%2Dbody%20sub%7Bbottom%3A%2D%2E25em%7D%2Emarkdown%2Dbody%20sup%7Btop%3A%2D%2E5em%7D%2Emarkdown%2Dbody%20img%7Bborder%2Dstyle%3Anone%3Bmax%2Dwidth%3A100%25%3Bbox%2Dsizing%3Acontent%2Dbox%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20kbd%2C%2Emarkdown%2Dbody%20pre%2C%2Emarkdown%2Dbody%20samp%7Bfont%2Dfamily%3Amonospace%3Bfont%2Dsize%3A1em%7D%2Emarkdown%2Dbody%20figure%7Bmargin%3A1em%20var%28%2D%2Dbase%2Dsize%2D40%29%7D%2Emarkdown%2Dbody%20hr%7Bbox%2Dsizing%3Acontent%2Dbox%3Boverflow%3Ahidden%3Bbackground%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3Bheight%3A%2E25em%3Bpadding%3A0%3Bmargin%3Avar%28%2D%2Dbase%2Dsize%2D24%29%200%3Bbackground%2Dcolor%3Avar%28%2D%2DborderColor%2Ddefault%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20input%7Bfont%3Ainherit%3Bmargin%3A0%3Boverflow%3Avisible%3Bfont%2Dfamily%3Ainherit%3Bfont%2Dsize%3Ainherit%3Bline%2Dheight%3Ainherit%7D%2Emarkdown%2Dbody%20%5Btype%3Dbutton%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dreset%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dsubmit%5D%7B%2Dwebkit%2Dappearance%3Abutton%3Bappearance%3Abutton%7D%2Emarkdown%2Dbody%20%5Btype%3Dcheckbox%5D%2C%2Emarkdown%2Dbody%20%5Btype%3Dradio%5D%7Bbox%2Dsizing%3Aborder%2Dbox%3Bpadding%3A0%7D%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%2C%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%7Bheight%3Aauto%7D%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Dcancel%2Dbutton%2C%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Ddecoration%7B%2Dwebkit%2Dappearance%3Anone%3Bappearance%3Anone%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dinput%2Dplaceholder%7Bcolor%3Ainherit%3Bopacity%3A%2E54%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dfile%2Dupload%2Dbutton%7B%2Dwebkit%2Dappearance%3Abutton%3Bappearance%3Abutton%3Bfont%3Ainherit%7D%2Emarkdown%2Dbody%20a%3Ahover%7Btext%2Ddecoration%3Aunderline%7D%2Emarkdown%2Dbody%20%3A%3Aplaceholder%7Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bopacity%3A1%7D%2Emarkdown%2Dbody%20hr%3A%3Abefore%7Bdisplay%3Atable%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%20hr%3A%3Aafter%7Bdisplay%3Atable%3Bclear%3Aboth%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%20table%7Bborder%2Dspacing%3A0%3Bborder%2Dcollapse%3Acollapse%3Bdisplay%3Ablock%3Bwidth%3Amax%2Dcontent%3Bmax%2Dwidth%3A100%25%3Boverflow%3Aauto%3Bfont%2Dvariant%3Atabular%2Dnums%7D%2Emarkdown%2Dbody%20td%2C%2Emarkdown%2Dbody%20th%7Bpadding%3A0%7D%2Emarkdown%2Dbody%20details%20summary%7Bcursor%3Apointer%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2C%2Emarkdown%2Dbody%20a%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A%2D2px%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3Asolid%201px%20rgba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20a%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A%2D2px%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2C%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2C%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%7Boutline%2Doffset%3A0%7D%2Emarkdown%2Dbody%20kbd%7Bdisplay%3Ainline%2Dblock%3Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D4%29%3Bfont%3A11px%20var%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bline%2Dheight%3A10px%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bvertical%2Dalign%3Amiddle%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%3Asolid%201px%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3Bborder%2Dradius%3A6px%3Bbox%2Dshadow%3Ainset%200%20%2D1px%200%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%7D%2Emarkdown%2Dbody%20h1%2C%2Emarkdown%2Dbody%20h2%2C%2Emarkdown%2Dbody%20h3%2C%2Emarkdown%2Dbody%20h4%2C%2Emarkdown%2Dbody%20h5%2C%2Emarkdown%2Dbody%20h6%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D24%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bline%2Dheight%3A1%2E25%7D%2Emarkdown%2Dbody%20h2%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bpadding%2Dbottom%3A%2E3em%3Bfont%2Dsize%3A1%2E5em%3Bborder%2Dbottom%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20h3%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A1%2E25em%7D%2Emarkdown%2Dbody%20h4%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A1em%7D%2Emarkdown%2Dbody%20h5%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A%2E875em%7D%2Emarkdown%2Dbody%20h6%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bfont%2Dsize%3A%2E85em%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20p%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A10px%7D%2Emarkdown%2Dbody%20blockquote%7Bmargin%3A0%3Bpadding%3A0%201em%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bborder%2Dleft%3A%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20ol%2C%2Emarkdown%2Dbody%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%3Bpadding%2Dleft%3A2em%7D%2Emarkdown%2Dbody%20ol%20ol%2C%2Emarkdown%2Dbody%20ul%20ol%7Blist%2Dstyle%2Dtype%3Alower%2Droman%7D%2Emarkdown%2Dbody%20ol%20ol%20ol%2C%2Emarkdown%2Dbody%20ol%20ul%20ol%2C%2Emarkdown%2Dbody%20ul%20ol%20ol%2C%2Emarkdown%2Dbody%20ul%20ul%20ol%7Blist%2Dstyle%2Dtype%3Alower%2Dalpha%7D%2Emarkdown%2Dbody%20dd%7Bmargin%2Dleft%3A0%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20samp%2C%2Emarkdown%2Dbody%20tt%7Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bfont%2Dsize%3A12px%7D%2Emarkdown%2Dbody%20pre%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%3Bfont%2Dfamily%3Avar%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3Bfont%2Dsize%3A12px%3Bword%2Dwrap%3Anormal%7D%2Emarkdown%2Dbody%20%2Eocticon%7Bdisplay%3Ainline%2Dblock%3Boverflow%3Avisible%21important%3Bvertical%2Dalign%3Atext%2Dbottom%3Bfill%3AcurrentColor%7D%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%2C%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%7Bmargin%3A0%3Bappearance%3Anone%7D%2Emarkdown%2Dbody%20%2Emr%2D2%7Bmargin%2Dright%3Avar%28%2D%2Dbase%2Dsize%2D8%2C8px%29%21important%7D%2Emarkdown%2Dbody%3A%3Abefore%7Bdisplay%3Atable%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%3A%3Aafter%7Bdisplay%3Atable%3Bclear%3Aboth%3Bcontent%3A%22%22%7D%2Emarkdown%2Dbody%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%21important%7D%2Emarkdown%2Dbody%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%21important%7D%2Emarkdown%2Dbody%20a%3Anot%28%5Bhref%5D%29%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20%2Eabsent%7Bcolor%3Avar%28%2D%2DfgColor%2Ddanger%29%7D%2Emarkdown%2Dbody%20%2Eanchor%7Bfloat%3Aleft%3Bpadding%2Dright%3Avar%28%2D%2Dbase%2Dsize%2D4%29%3Bmargin%2Dleft%3A%2D20px%3Bline%2Dheight%3A1%7D%2Emarkdown%2Dbody%20%2Eanchor%3Afocus%7Boutline%3A0%7D%2Emarkdown%2Dbody%20blockquote%2C%2Emarkdown%2Dbody%20details%2C%2Emarkdown%2Dbody%20dl%2C%2Emarkdown%2Dbody%20ol%2C%2Emarkdown%2Dbody%20p%2C%2Emarkdown%2Dbody%20pre%2C%2Emarkdown%2Dbody%20table%2C%2Emarkdown%2Dbody%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20blockquote%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%7D%2Emarkdown%2Dbody%20blockquote%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20h1%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h2%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h3%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h4%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h5%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h6%20%2Eocticon%2Dlink%7Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bvertical%2Dalign%3Amiddle%3Bvisibility%3Ahidden%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%7Btext%2Ddecoration%3Anone%7D%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%7Bvisibility%3Avisible%7D%2Emarkdown%2Dbody%20h1%20code%2C%2Emarkdown%2Dbody%20h1%20tt%2C%2Emarkdown%2Dbody%20h2%20code%2C%2Emarkdown%2Dbody%20h2%20tt%2C%2Emarkdown%2Dbody%20h3%20code%2C%2Emarkdown%2Dbody%20h3%20tt%2C%2Emarkdown%2Dbody%20h4%20code%2C%2Emarkdown%2Dbody%20h4%20tt%2C%2Emarkdown%2Dbody%20h5%20code%2C%2Emarkdown%2Dbody%20h5%20tt%2C%2Emarkdown%2Dbody%20h6%20code%2C%2Emarkdown%2Dbody%20h6%20tt%7Bpadding%3A0%20%2E2em%3Bfont%2Dsize%3Ainherit%7D%2Emarkdown%2Dbody%20summary%20h1%2C%2Emarkdown%2Dbody%20summary%20h2%2C%2Emarkdown%2Dbody%20summary%20h3%2C%2Emarkdown%2Dbody%20summary%20h4%2C%2Emarkdown%2Dbody%20summary%20h5%2C%2Emarkdown%2Dbody%20summary%20h6%7Bdisplay%3Ainline%2Dblock%7D%2Emarkdown%2Dbody%20summary%20h1%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h2%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h3%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h4%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h5%20%2Eanchor%2C%2Emarkdown%2Dbody%20summary%20h6%20%2Eanchor%7Bmargin%2Dleft%3A%2D40px%7D%2Emarkdown%2Dbody%20summary%20h1%2C%2Emarkdown%2Dbody%20summary%20h2%7Bpadding%2Dbottom%3A0%3Bborder%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20ol%2Eno%2Dlist%2C%2Emarkdown%2Dbody%20ul%2Eno%2Dlist%7Bpadding%3A0%3Blist%2Dstyle%2Dtype%3Anone%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22a%20s%22%5D%7Blist%2Dstyle%2Dtype%3Alower%2Dalpha%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22A%20s%22%5D%7Blist%2Dstyle%2Dtype%3Aupper%2Dalpha%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22i%20s%22%5D%7Blist%2Dstyle%2Dtype%3Alower%2Droman%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%22I%20s%22%5D%7Blist%2Dstyle%2Dtype%3Aupper%2Droman%7D%2Emarkdown%2Dbody%20ol%5Btype%3D%221%22%5D%7Blist%2Dstyle%2Dtype%3Adecimal%7D%2Emarkdown%2Dbody%20div%3Eol%3Anot%28%5Btype%5D%29%7Blist%2Dstyle%2Dtype%3Adecimal%7D%2Emarkdown%2Dbody%20ol%20ol%2C%2Emarkdown%2Dbody%20ol%20ul%2C%2Emarkdown%2Dbody%20ul%20ol%2C%2Emarkdown%2Dbody%20ul%20ul%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20li%3Ep%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20li%2Bli%7Bmargin%2Dtop%3A%2E25em%7D%2Emarkdown%2Dbody%20dl%7Bpadding%3A0%7D%2Emarkdown%2Dbody%20dl%20dt%7Bpadding%3A0%3Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bfont%2Dsize%3A1em%3Bfont%2Dstyle%3Aitalic%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20dl%20dd%7Bpadding%3A0%20var%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20table%20th%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%7D%2Emarkdown%2Dbody%20table%20td%2C%2Emarkdown%2Dbody%20table%20th%7Bpadding%3A6px%2013px%3Bborder%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20table%20td%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20table%20tr%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bborder%2Dtop%3A1px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20table%20tr%3Anth%2Dchild%282n%29%7Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%7D%2Emarkdown%2Dbody%20table%20img%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20img%5Balign%3Dright%5D%7Bpadding%2Dleft%3A20px%7D%2Emarkdown%2Dbody%20img%5Balign%3Dleft%5D%7Bpadding%2Dright%3A20px%7D%2Emarkdown%2Dbody%20%2Eemoji%7Bmax%2Dwidth%3Anone%3Bvertical%2Dalign%3Atext%2Dtop%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7D%2Emarkdown%2Dbody%20span%2Eframe%7Bdisplay%3Ablock%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Eframe%3Espan%7Bdisplay%3Ablock%3Bfloat%3Aleft%3Bwidth%3Aauto%3Bpadding%3A7px%3Bmargin%3A13px%200%200%3Boverflow%3Ahidden%3Bborder%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20span%2Eframe%20span%20img%7Bdisplay%3Ablock%3Bfloat%3Aleft%7D%2Emarkdown%2Dbody%20span%2Eframe%20span%20span%7Bdisplay%3Ablock%3Bpadding%3A5px%200%200%3Bclear%3Aboth%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%7Bdisplay%3Ablock%3Boverflow%3Ahidden%3Bclear%3Aboth%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%20auto%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Acenter%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%20span%20img%7Bmargin%3A0%20auto%3Btext%2Dalign%3Acenter%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%7Bdisplay%3Ablock%3Boverflow%3Ahidden%3Bclear%3Aboth%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%200%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20span%2Ealign%2Dright%20span%20img%7Bmargin%3A0%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%7Bdisplay%3Ablock%3Bfloat%3Aleft%3Bmargin%2Dright%3A13px%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%20span%7Bmargin%3A13px%200%200%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dright%7Bdisplay%3Ablock%3Bfloat%3Aright%3Bmargin%2Dleft%3A13px%3Boverflow%3Ahidden%7D%2Emarkdown%2Dbody%20span%2Efloat%2Dright%3Espan%7Bdisplay%3Ablock%3Bmargin%3A13px%20auto%200%3Boverflow%3Ahidden%3Btext%2Dalign%3Aright%7D%2Emarkdown%2Dbody%20code%2C%2Emarkdown%2Dbody%20tt%7Bpadding%3A%2E2em%20%2E4em%3Bmargin%3A0%3Bfont%2Dsize%3A85%25%3Bwhite%2Dspace%3Abreak%2Dspaces%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dneutral%2Dmuted%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20code%20br%2C%2Emarkdown%2Dbody%20tt%20br%7Bdisplay%3Anone%7D%2Emarkdown%2Dbody%20del%20code%7Btext%2Ddecoration%3Ainherit%7D%2Emarkdown%2Dbody%20samp%7Bfont%2Dsize%3A85%25%7D%2Emarkdown%2Dbody%20pre%20code%7Bfont%2Dsize%3A100%25%7D%2Emarkdown%2Dbody%20pre%3Ecode%7Bpadding%3A0%3Bmargin%3A0%3Bword%2Dbreak%3Anormal%3Bwhite%2Dspace%3Apre%3Bbackground%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ehighlight%7Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%7Bmargin%2Dbottom%3A0%3Bword%2Dbreak%3Anormal%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%2C%2Emarkdown%2Dbody%20pre%7Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Boverflow%3Aauto%3Bfont%2Dsize%3A85%25%3Bline%2Dheight%3A1%2E45%3Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%3Bbackground%2Dcolor%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20pre%20code%2C%2Emarkdown%2Dbody%20pre%20tt%7Bdisplay%3Ainline%3Bpadding%3A0%3Bmargin%3A0%3Boverflow%3Avisible%3Bline%2Dheight%3Ainherit%3Bword%2Dwrap%3Anormal%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20td%2C%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%7Bpadding%3A5px%3Boverflow%3Ahidden%3Bfont%2Dsize%3A12px%3Bline%2Dheight%3A1%3Btext%2Dalign%3Aleft%3Bwhite%2Dspace%3Anowrap%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20%2Eblob%2Dnum%7Bpadding%3A10px%20var%28%2D%2Dbase%2Dsize%2D8%29%209px%3Btext%2Dalign%3Aright%3Bbackground%3Avar%28%2D%2DbgColor%2Ddefault%29%3Bborder%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20tr%7Bborder%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C600%29%3Bbackground%3Avar%28%2D%2DbgColor%2Dmuted%29%3Bborder%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Abefore%7Bcontent%3A%22%5B%22%7D%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Aafter%7Bcontent%3A%22%5D%22%7D%2Emarkdown%2Dbody%20%2Efootnotes%7Bfont%2Dsize%3A12px%3Bcolor%3Avar%28%2D%2DfgColor%2Dmuted%29%3Bborder%2Dtop%3A1px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20ol%7Bpadding%2Dleft%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20ol%20ul%7Bdisplay%3Ainline%2Dblock%3Bpadding%2Dleft%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D16%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%7Bposition%3Arelative%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%3A%3Abefore%7Bposition%3Aabsolute%3Btop%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bright%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bbottom%3Acalc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3Bleft%3Acalc%28var%28%2D%2Dbase%2Dsize%2D24%29%2A%2D1%29%3Bpointer%2Devents%3Anone%3Bcontent%3A%22%22%3Bborder%3A2px%20solid%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3Bborder%2Dradius%3A6px%7D%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%7Bcolor%3Avar%28%2D%2DfgColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Efootnotes%20%2Edata%2Dfootnote%2Dbackref%20g%2Demoji%7Bfont%2Dfamily%3Amonospace%7D%2Emarkdown%2Dbody%20%2Epl%2Dc%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dc1%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dv%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%29%7D%2Emarkdown%2Dbody%20%2Epl%2De%2C%2Emarkdown%2Dbody%20%2Epl%2Den%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%29%7D%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Ds1%2C%2Emarkdown%2Dbody%20%2Epl%2Dsmi%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dent%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dk%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dpds%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%2C%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsra%2C%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsre%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsmw%2C%2Emarkdown%2Dbody%20%2Epl%2Dv%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dbu%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dii%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dc2%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dml%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmh%2C%2Emarkdown%2Dbody%20%2Epl%2Dmh%20%2Epl%2Den%2C%2Emarkdown%2Dbody%20%2Epl%2Dms%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi%7Bfont%2Dstyle%3Aitalic%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmb%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmd%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi1%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmc%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmi2%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%29%3Bbackground%2Dcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dmdr%7Bfont%2Dweight%3A700%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dba%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dsg%7Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%29%7D%2Emarkdown%2Dbody%20%2Epl%2Dcorl%7Btext%2Ddecoration%3Aunderline%3Bcolor%3Avar%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%29%7D%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20%5Brole%3Dtabpanel%5D%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20button%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20summary%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3A0%3Bbox%2Dshadow%3Anone%7D%2Emarkdown%2Dbody%20%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%2Emarkdown%2Dbody%20details%2Ddialog%3Afocus%3Anot%28%3Afocus%2Dvisible%29%7Boutline%3A0%7D%2Emarkdown%2Dbody%20g%2Demoji%7Bdisplay%3Ainline%2Dblock%3Bmin%2Dwidth%3A1ch%3Bfont%2Dfamily%3A%22Apple%20Color%20Emoji%22%2C%22Segoe%20UI%20Emoji%22%2C%22Segoe%20UI%20Symbol%22%3Bfont%2Dsize%3A1em%3Bfont%2Dstyle%3Anormal%21important%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%3Bline%2Dheight%3A1%3Bvertical%2Dalign%3A%2D%2E075em%7D%2Emarkdown%2Dbody%20g%2Demoji%20img%7Bwidth%3A1em%3Bheight%3A1em%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%7Bdisplay%3Ablock%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Anot%28%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%29%7Bwidth%3Afit%2Dcontent%7D%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%3Afocus%2Dvisible%7Boutline%3A2px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3Boutline%2Doffset%3A2px%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%7Blist%2Dstyle%2Dtype%3Anone%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20label%7Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C400%29%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Eenabled%20label%7Bcursor%3Apointer%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%7Bmargin%2Dtop%3Avar%28%2D%2Dbase%2Dsize%2D4%29%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20%2Ehandle%7Bdisplay%3Anone%7D%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2E2em%20%2E25em%20%2D1%2E4em%3Bvertical%2Dalign%3Amiddle%7D%2Emarkdown%2Dbody%20ul%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2D1%2E6em%20%2E25em%20%2E2em%7D%2Emarkdown%2Dbody%20ol%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%7Bmargin%3A0%20%2D1%2E6em%20%2E25em%20%2E2em%7D%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Afocus%2Dwithin%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%2C%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Ahover%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%7Bdisplay%3Ablock%3Bwidth%3Aauto%3Bheight%3A24px%3Boverflow%3Avisible%3Bclip%2Dpath%3Anone%7D%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dcalendar%2Dpicker%2Dindicator%7Bfilter%3Ainvert%2850%25%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%7Bpadding%3Avar%28%2D%2Dbase%2Dsize%2D8%29%20var%28%2D%2Dbase%2Dsize%2D16%29%3Bmargin%2Dbottom%3Avar%28%2D%2Dbase%2Dsize%2D16%29%3Bcolor%3Ainherit%3Bborder%2Dleft%3A%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%20%2Emarkdown%2Dalert%2Dtitle%7Bdisplay%3Aflex%3Bfont%2Dweight%3Avar%28%2D%2Dbase%2Dtext%2Dweight%2Dmedium%2C500%29%3Balign%2Ditems%3Acenter%3Bline%2Dheight%3A1%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Daccent%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Daccent%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Ddone%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Ddone%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Dattention%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Dattention%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Dsuccess%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Dsuccess%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%7Bborder%2Dleft%2Dcolor%3Avar%28%2D%2DborderColor%2Ddanger%2Demphasis%29%7D%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%20%2Emarkdown%2Dalert%2Dtitle%7Bcolor%3Avar%28%2D%2DfgColor%2Ddanger%29%7D%2Emarkdown%2Dbody%3E%3Afirst%2Dchild%3E%2Eheading%2Delement%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%21important%7D%2Emarkdown%2Dbody%20%2Ehighlight%20pre%3Ahas%28%2B%2Ezeroclipboard%2Dcontainer%29%7Bmin%2Dheight%3A52px%7D%0A" rel="stylesheet" />
+  <style>
+body { max-width: 900px; margin: 40px auto; padding: 0 20px; font-size: 24px; line-height: 1.7; }
+code, pre { font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">project</h1>
+</header>
+<h1 id="valiwaste-ai--revised-opportunity-report-v2">ValiWaste AI —
+Revised Opportunity Report (v2)</h1>
+<p><strong>Prompt version used:</strong> &quot;Find a Quick-Win AI Business
+Opportunity&quot; v3 (2026-11-05) <strong>Scope:</strong> INDUSTRY =
+Récupération de déchets triés / recyclage, valorisation matière (NAF
+anchor 38.32Z, given); CUSTOMER_LOCATION = Doubs, France; BUSINESS_SIZE
+= self-employed, 1–9, 10–49, 50–249; MY_LOCATION = Besançon;
+TIME_TO_FIRST_SALE = 1 week; MAX_DAYS_TO_PAYMENT = 14. <strong>This is a
+revision of a v1 report dated 2026-11-05.</strong> Every figure below
+has been checked against primary sources or the official French company
+registry API; changes from v1 are marked <strong>[CORRECTED]</strong>.
+Figures not marked that way were confirmed as originally stated.</p>
+<p><strong>Current date: November 6, 2026.</strong></p>
+<hr />
+<h2 id="0-what-changed-from-v1-and-why">0. What changed from v1, and
+why</h2>
+<p>v1 was directionally right — a real legal trigger, a real target NAF
+code, a real host candidate — but contained enough factual errors that
+it would have failed on first contact with a prospect or the host
+organization. This revision corrects:</p>
+<ol type="1">
+<li><strong>The regulatory fact itself was slightly wrong.</strong>
+Annexe I-B covers 8 flux (7 historic + textiles), not &quot;8 to 9 including
+biowaste.&quot; Biowaste has its own, separate attestation under a different
+article (D. 543-226-2). <strong>[CORRECTED]</strong></li>
+<li><strong>The federation&#39;s name needed a date-sensitive
+correction.</strong> It was called FEDEREC (one R) until an
+extraordinary general meeting in November 2024, when it renamed itself
+<strong>FEDERREC</strong> (two R&#39;s). As of today (Nov 2026), FEDERREC is
+the current, correct spelling to use in all outreach material.
+<strong>[CORRECTED]</strong></li>
+<li><strong>A real, SME-priced competitor exists</strong> (Okapia OS,
+€340–890/month) that v1&#39;s adversarial test missed. <strong>[CORRECTED —
+new finding]</strong></li>
+<li><strong>Both of v1&#39;s named example prospects are
+disqualified.</strong> Doubs Recyclage (Établissements Artmann et Fils)
+and Haut-Doubs Recyclage (Massacrier) are both officially classified
+<code>ETI</code> (entreprise de taille intermédiaire) and/or
+group-controlled — not independent SMEs. <strong>[CORRECTED — new
+finding]</strong></li>
+<li><strong>The addressable market was never actually counted in
+v1</strong> (&quot;~86 registered units,&quot; unsourced). It has now been counted
+exactly, at three geographic levels, via the official
+INSEE/Sirene-backed company registry API. <strong>[CORRECTED — new
+data]</strong></li>
+<li><strong>The revenue-impact framing leaned on cost savings and churn
+defense</strong>, which the prompt&#39;s own Goal section explicitly
+excludes from &quot;measurable revenue growth.&quot; Reframed below around account
+acquisition/AOV, consistent with the prompt&#39;s kill condition.
+<strong>[CORRECTED]</strong></li>
+<li><strong>The &quot;first year of enforcement&quot; timing claim was
+stale.</strong> Annexe I-B&#39;s actual first mandatory use was Jan–March
+2026 — already past. This is the <em>second</em> cycle (due March 31,
+2027), which is reframed below as a stronger hook, not a weaker one.
+<strong>[CORRECTED]</strong></li>
+</ol>
+<hr />
+<h2 id="1-naf-value-chain-exploration-unchanged-from-v1-confirmed">1.
+NAF value-chain exploration (unchanged from v1, confirmed)</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Position</th>
+<th>NAF</th>
+<th>Description</th>
+<th>Fit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Upstream</td>
+<td>38.11Z</td>
+<td>Collecte des déchets non dangereux</td>
+<td>High public-sector/procurement friction</td>
+</tr>
+<tr class="even">
+<td><strong>Core anchor</strong></td>
+<td><strong>38.32Z</strong></td>
+<td><strong>Récupération de déchets triés</strong></td>
+<td><strong>Selected — confirmed below with real counts</strong></td>
+</tr>
+<tr class="odd">
+<td>Downstream</td>
+<td>38.21Z</td>
+<td>Traitement et élimination</td>
+<td>Too consolidated, slow sales cycles</td>
+</tr>
+<tr class="even">
+<td>Downstream</td>
+<td>46.77Z</td>
+<td>Commerce de gros de déchets et débris</td>
+<td>Low physical workflow, different problem</td>
+</tr>
+</tbody>
+</table>
+<p>38.32Z remains the right anchor. 38.11Z is kept as a secondary source
+of prospects (2 of the 11 real Doubs prospects came from 38.11Z),
+confirmed below.</p>
+<hr />
+<h2 id="2-pre-check-verified-load-bearing-facts">2. Pre-check: verified
+load-bearing facts</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Fact</th>
+<th>Status</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Annual sorting attestation obligation</strong> (Art. D.
+543-284) — installation operators and intermediaries
+(collectors/traders/brokers) must deliver an attestation to waste
+producers before March 31 each year</td>
+<td><strong>Confirmed current</strong></td>
+<td>Légifrance, Arrêté du 21 décembre 2021 (JORFTEXT000045084125);
+confirmed the obligation applies to &quot;exploitants d&#39;installation&quot; (covers
+38.32Z operators directly, not only collectors)</td>
+</tr>
+<tr class="even">
+<td><strong>2. Annexe I-B template</strong> — the updated form, used for
+attestations delivered 1 Jan–31 Mar 2026 covering 2025 waste,
+onward</td>
+<td><strong>Confirmed current, corrected content</strong>
+[CORRECTED]</td>
+<td>Légifrance; preventionbtp.fr. Covers <strong>8 flux</strong>
+(papier/carton, métal, plastique, verre, bois, fraction minérale,
+plâtre, textiles). <strong>Biowaste is NOT part of this
+attestation</strong> — it has a separate attestation under Art. D.
+543-226-2, a different legal basis with different fields. A single
+combined 9-flux template would not match either official form.</td>
+</tr>
+<tr class="odd">
+<td><strong>3. B2B client operational pressure</strong> — industrial
+clients need these attestations for their own compliance/audit
+purposes</td>
+<td><strong>Confirmed current</strong></td>
+<td>Code de l&#39;environnement Art. R. 541-48-3; consistent with the
+mechanism described (producers must justify source-sorting via an
+attestation from their waste handler)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No load-bearing fact is superseded or false.</strong> Fact 2
+required a correction to its content, not a rejection — this changes the
+product spec (build to the real 8-flux Cadre 1–6 layout below), not the
+viability of the opportunity.</p>
+<hr />
+<h2 id="3-gate-results">3. Gate results</h2>
+<p><strong>Revenue measurement:</strong> PASS, conditional on reframing
+(see §6). <strong>Gate 1 (starving crowd):</strong> PASS. Independent
+recovery yards do the Annexe I-B aggregation by hand; real, named small
+operators confirmed to exist and be currently active in Doubs (see §9).
+<strong>Gate 2 (host-beneficiary):</strong> PASS, with corrections.</p>
+<ul>
+<li>Host: <strong>FEDERREC Centre et Sud-Est</strong> (the regional
+branch covering Bourgogne-Franche-Comté jointly with
+Auvergne-Rhône-Alpes).</li>
+<li>Regional <strong>sector</strong> figure (not membership): 125
+establishments / 1,831 employees in Bourgogne-Franche-Comté — this is a
+whole-of-sector statistic the federation publishes, not its own member
+count. <strong>[CORRECTED]</strong></li>
+<li>Actual regional <strong>membership</strong>: the branch&#39;s own former
+president stated &quot;beyond 80 companies (excluding national groups)&quot; — use
+this figure in any host conversation, not the sector stat.
+<strong>[CORRECTED]</strong> <strong>Gate 3 (pilot access):</strong>
+PASS — direct access confirmed via the official company registry; see §9
+for the real, verified 11-name Doubs list (not v1&#39;s unsourced &quot;~15
+facilities&quot;).</li>
+</ul>
+<p><strong>Opportunity conditions:</strong></p>
+<ol type="1">
+<li>Domain expertise from customer/regulation: PASS — confirmed, the
+legal schema is public (Légifrance).</li>
+<li>Technical feasibility: PASS — confirmed buildable with Python PDF
+parsing + Claude API + PDF generation, now specified against the real
+Cadre 1–6 field layout (§5).</li>
+<li>Recurring problem: PASS — annual filing (March 31 every year) plus
+monthly carbon-reporting subscription.</li>
+<li>Retention potential: PASS, same mechanism as v1.</li>
+<li>Capability gap: PASS for the real target list (§9) — none of the 11
+confirmed Doubs prospects show signs of in-house dev capacity.</li>
+<li>Fast first payment: PASS — €950 upfront, 50/50 split, matches the
+14-day constraint.</li>
+</ol>
+<hr />
+<h2 id="4-the-problem-confirmed-re-sourced">4. The problem (confirmed,
+re-sourced)</h2>
+<p>Independent sorting/recovery yards (NAF 38.32Z, with some 38.11Z
+collectors) serve industrial B2B clients (metal machining,
+manufacturing, construction) who generate scrap tracked via weighbridge
+tickets. Under Art. D. 543-284, every yard must aggregate a year&#39;s worth
+of tickets into an Annexe I-B attestation per client before March 31.
+This is currently done by hand in spreadsheets, mapping local material
+names to official categories — labor-intensive, error-prone, and a real
+compliance risk for both the yard and its clients.</p>
+<p><strong>One correction:</strong> the pressure point is not only
+&quot;losing accounts to Paprec/Veolia&#39;s digital portals&quot; (v1&#39;s framing) —
+it&#39;s also that <strong>every yard, regardless of competitive pressure,
+has a hard legal deadline it must hit</strong>, which is the more
+universal and provable urgency driver across all 11 real prospects, most
+of whom are too small to be realistically competing head-to-head with
+national groups for the same contracts.</p>
+<hr />
+<h2 id="5-the-solution--corrected-to-the-real-legal-layout">5. The
+solution — corrected to the real legal layout</h2>
+<p>ValiWaste AI: a Python + Claude API pipeline that parses weighbridge
+tickets (PDF/CSV) and generates a conformant Annexe I-B PDF plus a
+monthly carbon-savings dashboard for B2B clients.</p>
+<p><strong>Corrected field spec</strong> (from the Arrêté du 21 décembre
+2021&#39;s notice explicative, Cadres 1–6):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Cadre</th>
+<th>Content</th>
+<th>Build note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Émetteur</td>
+<td>Issuer identity; for intermediaries, récépissé/prefecture
+declaration details</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>2. Origine</td>
+<td>The producer/holder (one client per attestation)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>3. Flux</td>
+<td>Waste denomination + code; single-flux or mixed-flux checkboxes for
+the 8 flux</td>
+<td>Map local material names to these 8 categories, not 9</td>
+</tr>
+<tr class="even">
+<td>4. Quantités</td>
+<td>4.A received, 4.B sent to valorisation, 4.C valorised directly, 4.D
+losses — <strong>hard validation rule: 4.B + 4.C = 4.A −
+4.D</strong></td>
+<td>Build this balance check into the generator — it&#39;s a genuine
+differentiator a spreadsheet or generic AI tool won&#39;t enforce</td>
+</tr>
+<tr class="odd">
+<td>5. Destinations finales</td>
+<td>Per-flux table: installation type, location, <strong>% split that
+must sum to 100%</strong></td>
+<td>Second built-in validation rule</td>
+</tr>
+<tr class="even">
+<td>6. Date/signature</td>
+<td>—</td>
+<td>Can be electronic</td>
+</tr>
+</tbody>
+</table>
+<p>The law requires reproducing the official <strong>layout</strong>,
+not just the data — pull the authenticated JORF PDF
+(JORFTEXT000045084125) before building the template, don&#39;t design from
+the text description alone.</p>
+<p><strong>Biowaste attestations (D. 543-226-2)</strong> should be
+offered as a clearly separate, optional second product if a client needs
+it — never merged into the Annexe I-B output.</p>
+<hr />
+<h2 id="6-revenue-impact--reframed-to-fit-the-prompts-own-kill-condition">6.
+Revenue impact — reframed to fit the prompt&#39;s own kill condition</h2>
+<p>v1&#39;s primary metrics were labor-hour savings and churn defense — cost
+reduction and revenue <em>defense</em>, not revenue <em>growth</em>,
+which the prompt explicitly excludes (&quot;avoid speculative value...
+avoiding a fine that may never happen&quot; is the same category of claim as
+&quot;avoiding account loss that may never happen&quot;).</p>
+<p><strong>Reframed primary metric:</strong> the monthly B2B Carbon
+Yield Card is a genuine differentiator independent yards don&#39;t otherwise
+have. The measurable revenue-growth claim is:</p>
+<ul>
+<li><strong>(a) New account acquisition</strong> — yards can bid for and
+win B2B contracts specifically because they can now offer standardized
+carbon/ESG reporting their smaller competitors can&#39;t. Measure: count of
+new or upsold contracts in the 12 months post-launch, with contract
+value, compared to the prior 12 months&#39; baseline.</li>
+<li><strong>(b) Average order value</strong> — bundling the carbon
+dashboard as a paid add-on to existing client relationships, rather than
+giving it away, raises per-client revenue directly.</li>
+</ul>
+<p>Labor savings and churn defense remain real and worth mentioning to
+the prospect, but should not be the headline &quot;revenue growth&quot; claim in
+the report or the pitch.</p>
+<hr />
+<h2 id="7-competitive-advantage--updated-for-a-real-competitor">7.
+Competitive advantage — updated for a real competitor</h2>
+<p><strong>Okapia OS</strong> is a French SaaS tool (€340–890/month)
+already selling to sorting centres, with weighbridge integration and
+&quot;attestations de valorisation&quot; — a genuine, not hypothetical, competitor
+missed in v1&#39;s adversarial test.</p>
+<p>Key differentiators to lead with:</p>
+<ul>
+<li>Okapia&#39;s own materials don&#39;t claim strict Annexe I-B layout
+conformity; ValiWaste AI&#39;s built-in mass-balance and 100%-destination
+validation (§5) is a concrete, demonstrable edge.</li>
+<li>One-time setup fee vs. recurring SaaS subscription — lower
+commitment for a first sale, consistent with the 14-day fast-payment
+constraint.</li>
+<li><strong>Decision needed before scaling past the pilot:</strong>
+compete directly on price/specialization, or approach Okapia for a
+partnership/white-label arrangement for the parsing layer. Recommended:
+decide this <em>after</em> the Doubs pilot, using real delivery data to
+negotiate from strength either way.</li>
+</ul>
+<hr />
+<h2 id="8-data-and-first-value-unchanged-confirmed-sound">8. Data and
+first value (unchanged, confirmed sound)</h2>
+<p>Zero data → 3–5 sample tickets → full batch under pilot agreement.
+This ladder already complies with the prompt&#39;s data principle and needs
+no correction.</p>
+<hr />
+<h2 id="9-pilot-plan--the-real-verified-doubs-prospect-list">9. Pilot
+plan — the real, verified Doubs prospect list</h2>
+<p>Built by querying the official company registry
+(recherche-entreprises.api.gouv.fr), fully paginated, filtered to active
+establishments in Doubs with size band ≤ 249 employees, then triaged to
+exclude companies with no current Doubs presence, group/legal-entity
+ownership, ETI/GE size classification, public bodies, and ESS/nonprofit
+structures (kept as a separate secondary list).</p>
+<p><strong>Real total: 35 companies matched the raw filter; 11 are
+genuine, independent, currently-active targets.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Company</th>
+<th>Town</th>
+<th>Owner(s)</th>
+<th>NAF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fer Métaux Services (FMS)</td>
+<td>Devecey</td>
+<td>François Roux, Sébastien Stehly</td>
+<td>38.32Z</td>
+</tr>
+<tr class="even">
+<td>France Métaux</td>
+<td>Audincourt</td>
+<td>Jean &amp; Léa Roger</td>
+<td>38.32Z</td>
+</tr>
+<tr class="odd">
+<td>SAS Trifer Recyclage</td>
+<td>Miserey-Salines</td>
+<td>Olivier Stehly</td>
+<td>38.32Z</td>
+</tr>
+<tr class="even">
+<td>Sarl Jeanmougin</td>
+<td>Mathay</td>
+<td>Hervé &amp; Corinne Jeanmougin</td>
+<td>38.32Z</td>
+</tr>
+<tr class="odd">
+<td>MN Recup</td>
+<td>Maîche</td>
+<td>Maxime &amp; Noël Jacquot</td>
+<td>38.32Z</td>
+</tr>
+<tr class="even">
+<td>Entreprise Wetzel</td>
+<td>Liesle</td>
+<td>Sébastien Wetzel</td>
+<td>38.32Z</td>
+</tr>
+<tr class="odd">
+<td>Mickael Varrin</td>
+<td>Valentigney</td>
+<td>Mickael Varrin</td>
+<td>38.32Z</td>
+</tr>
+<tr class="even">
+<td>Gipsy Jovanovich (Ferret)</td>
+<td>Saint-Vit</td>
+<td>Gipsy Jovanovich</td>
+<td>38.32Z</td>
+</tr>
+<tr class="odd">
+<td>Angelique Mourot (Rolland)</td>
+<td>Audincourt</td>
+<td>Angelique Mourot</td>
+<td>38.32Z</td>
+</tr>
+<tr class="even">
+<td>Liard Services</td>
+<td>Vuillecin</td>
+<td>Isabelle &amp; Laurent Liard</td>
+<td>38.11Z</td>
+</tr>
+<tr class="odd">
+<td>Willy Wetzel</td>
+<td>Montrond-le-Château</td>
+<td>Willy Wetzel</td>
+<td>38.11Z</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[CORRECTED]</strong> v1&#39;s two named examples — Doubs
+Recyclage and Haut-Doubs Recyclage (Massacrier) — are both confirmed
+<code>ETI</code>-classified and/or group-controlled (Doubs Recyclage is
+controlled by the E3R holding group). Neither belongs on this list; both
+are dropped.</p>
+<p><strong>Secondary list (ESS/nonprofit — different buyer profile,
+optional lower-priority track):</strong> Demain, Envie 2E Franche-Comté,
+La Recyclerie des Forges, La Ressourcerie, Trivial&#39;Compost.</p>
+<p><strong>Pilot roadmap:</strong> unchanged from v1&#39;s day-by-day
+structure, now pointed at the real 11 names above. Stop/go conditions
+unchanged.</p>
+<hr />
+<h2 id="10-host-beneficiary-plan--corrected">10. Host-beneficiary plan —
+corrected</h2>
+<ul>
+<li><strong>Host:</strong> FEDERREC Centre et Sud-Est.</li>
+<li><strong>Deal terms:</strong> as v1 (endorsement, newsletter/webinar
+mentions, discount structure) — unchanged in substance.</li>
+<li><strong>Correction:</strong> the outreach email and all materials
+must use the current correct spelling, and cite &quot;~80 member companies
+(excluding national groups)&quot; rather than the sector-wide
+125-establishment figure, when discussing the host&#39;s own reach.</li>
+</ul>
+<hr />
+<h2 id="11-pricing-and-revenue--recalculated-against-real-prospect-counts">11.
+Pricing and revenue — recalculated against real prospect counts</h2>
+<p>Unchanged pricing: €950 one-off setup (50/50 split) + €150/month or
+€1,800/year recurring.</p>
+<p><strong>Illustrative revenue ranges (labeled as assumption-based, not
+verified — real conversion only comes from the pilot):</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Real clean prospect count</th>
+<th>At ~50% eventual penetration</th>
+<th>Recurring, once saturated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Doubs (pilot)</td>
+<td>11</td>
+<td>~5–6 customers</td>
+<td>~€800/month</td>
+</tr>
+<tr class="even">
+<td>Region (Bourgogne-Franche-Comté)</td>
+<td>58</td>
+<td>~29 customers</td>
+<td>~€4,350/month (~€52k/year)</td>
+</tr>
+<tr class="odd">
+<td>National</td>
+<td>1,223 (real, full count)</td>
+<td>even 10% penetration ≈ 120 customers</td>
+<td>~€18,000/month (~€216k/year)</td>
+</tr>
+</tbody>
+</table>
+<p>The national figure changes the opportunity&#39;s character from a
+side-income tool to a real small business — <strong>but reaching it
+requires solving distribution, not outreach volume</strong>, since no
+solo operator cold-calls 1,223 companies (see §12).</p>
+<hr />
+<h2 id="12-execution-plan">12. Execution plan</h2>
+<p><strong>Ring 1 — Doubs (now):</strong> Day-by-day plan unchanged from
+v1 in structure, now pointed at the real 11 names in §9. Target: 2–3
+signed pilots within 7 days, first payment within 14.</p>
+<p><strong>Ring 2 — Bourgogne-Franche-Comté (immediately after Ring 1
+validates, not &quot;Month 6&quot;):</strong> 58 real prospects, confirmed by
+department:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Department</th>
+<th>Clean prospects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Saône-et-Loire (71)</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>Doubs (25) — done in Ring 1</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>Côte-d&#39;Or (21)</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Haute-Saône (70)</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Yonne (89)</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Jura (39)</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>Territoire de Belfort (90)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expand to Saône-et-Loire first, then Côte-d&#39;Or</strong> — in
+that order, using the same direct-outreach playbook plus the FEDERREC
+Centre-Sud-Est host relationship secured during Ring 1.</p>
+<p><strong>Ring 3 — National (1,223 real prospects, later,
+distribution-gated):</strong> This ring cannot be reached by scaling
+direct outreach — it requires: (a) a repeatable delivery process proven
+across Ring 1–2 without constant personal involvement, (b) resolving the
+Okapia OS compete-vs-partner question with real delivery data, (c)
+building relationships with FEDERREC&#39;s other 7 regional syndicates one
+at a time (there is no single &quot;national FEDERREC&quot; switch), and (d)
+likely some inbound motion (published case studies, trade press) once
+Ring 1–2 references exist. Top-prospect-density departments nationally
+(Bouches-du-Rhône 48, Seine-Saint-Denis 42, Rhône 41, Nord 39) are
+useful future targets but not reachable with the current distribution
+model — don&#39;t treat raw density as near-term priority.</p>
+<hr />
+<h2 id="13-timing--corrected">13. Timing — corrected</h2>
+<p><strong>[CORRECTED]</strong> v1 framed this as &quot;first year of Annexe
+I-B enforcement.&quot; It is not — the first mandatory cycle was
+January–March 2026, already past. This is the run-up to the
+<strong>second</strong> cycle (covering 2026 waste, due March 31,
+2027).</p>
+<p>This is a stronger hook than v1&#39;s framing, not a weaker one: every
+prospect in §9 likely just lived through one rushed, manual Annexe I-B
+filing season eight months ago. The pitch becomes &quot;you know exactly how
+painful that was in February — let&#39;s not repeat it,&quot; grounded in a real,
+recent, shared experience rather than an abstract future
+requirement.</p>
+<p>Seasonality rule compliance: the recurring monthly carbon-dashboard
+subscription still provides off-season revenue, independent of the March
+deadline, satisfying the prompt&#39;s seasonality exception.</p>
+<hr />
+<h2 id="14-adversarial-test-results--updated">14. Adversarial test
+results — updated</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Attack</th>
+<th>Rating</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Existing solutions</td>
+<td><strong>Weakened</strong> [CORRECTED from &quot;Survives&quot;]</td>
+<td>Okapia OS is a real, SME-priced competitor. Trackdéchets still
+confirmed out of scope (hazardous waste only). Differentiation plan in
+§7.</td>
+</tr>
+<tr class="even">
+<td>2. Past failures</td>
+<td>Survives</td>
+<td>Unchanged — heavy ERP deployments fail on complexity; a lightweight
+point tool avoids this.</td>
+</tr>
+<tr class="odd">
+<td>3. Willingness to pay</td>
+<td>Survives</td>
+<td>Unchanged.</td>
+</tr>
+<tr class="even">
+<td>4. Host reality</td>
+<td>Survives, with corrected name/membership figure</td>
+<td>FEDERREC does form SME-protection partnerships; use the real
+~80-member figure, not the sector stat.</td>
+</tr>
+<tr class="odd">
+<td>5. Revenue proof</td>
+<td>Weakened → addressed</td>
+<td>Reframed in §6 around account acquisition, not cost savings, to fit
+the prompt&#39;s own revenue-growth definition.</td>
+</tr>
+<tr class="even">
+<td>6. Recurring use</td>
+<td>Survives</td>
+<td>Monthly carbon reporting unchanged.</td>
+</tr>
+<tr class="odd">
+<td>7. Coming/outdated changes</td>
+<td>Survives, corrected</td>
+<td>The &quot;first year&quot; framing was stale (see §13); the underlying
+regulatory tailwind (textiles added, tightening enforcement) still
+stands.</td>
+</tr>
+<tr class="even">
+<td>8. DIY with AI</td>
+<td>Survives</td>
+<td>Generic AI tools still can&#39;t reliably batch-parse varied tickets or
+enforce the exact legal layout and balance checks.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strongest remaining case against the idea:</strong>
+distribution past Ring 2 is genuinely unsolved — the national TAM is
+real, but reaching it requires channel/partnership work this report
+hasn&#39;t validated yet, only sized.</p>
+<p><strong>What this test could not check:</strong> actual conversion
+rate from pitch to signed pilot (only a completed sale proves demand,
+per the prompt&#39;s own rule); whether Okapia OS would be open to
+partnership; DOM-TOM-specific regulatory variations for the two overseas
+departments that appeared in the national top-prospect list.</p>
+<hr />
+<h2 id="verdict">Verdict</h2>
+<p>Pursue. The opportunity survives every gate and the adversarial test,
+with corrections. The pilot plan is unchanged in mechanics, now pointed
+at a real, verified 11-name list. The growth story beyond Doubs is real
+and numerically solid (58 regional, 1,223 national, all fully counted,
+not estimated) — but Ring 3 is explicitly a distribution problem to
+solve later, not a volume assumption to bank on now.</p>
+</body>
+</html>
